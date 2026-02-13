@@ -2,36 +2,17 @@
 
 import { useState, useCallback } from "react";
 import { DataTable } from "@/components/data-table";
-import { NetworkGraph } from "@/components/network-graph";
 import { NetworkList } from "@/components/network-list";
-import { RecSimilarityGraph } from "@/components/graphs/rec-similarity";
-import { HubClustersGraph } from "@/components/graphs/hub-clusters";
-import { BipartiteGraph } from "@/components/graphs/bipartite";
-import { ConcentricRingsGraph } from "@/components/graphs/concentric-rings";
 import type { Person } from "@/lib/types";
 import type { GraphData } from "@/lib/graph-types";
 import peopleData from "@/data/people.json";
 import graphData from "@/data/graph_data.json";
 
 type Tab = "people" | "network";
-type GraphView = "similarity" | "clusters" | "bipartite" | "rings";
-
-const graphViewLabels: Record<GraphView, string> = {
-  similarity: "Similarity",
-  clusters: "Hub Clusters",
-  bipartite: "Bipartite",
-  rings: "Rings",
-};
 
 export default function Home() {
   const [tab, setTab] = useState<Tab>("people");
-  const [graphView, setGraphView] = useState<GraphView>("similarity");
-  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [filterMainstream, setFilterMainstream] = useState(true);
-
-  const handleSelectNode = useCallback((id: string | null) => {
-    setSelectedId(id);
-  }, []);
 
   return (
     <main className="min-h-screen flex flex-col max-w-[1600px] mx-auto">
@@ -96,71 +77,14 @@ export default function Home() {
           <DataTable data={peopleData as Person[]} />
         </div>
       ) : (
-        <>
-          {/* Graph view sub-tabs */}
-          <div className="flex-none flex gap-1 px-6 pt-2">
-            {(Object.keys(graphViewLabels) as GraphView[]).map((v) => (
-              <button
-                key={v}
-                onClick={() => setGraphView(v)}
-                className={`px-3 py-1 text-xs font-medium rounded-md transition-colors ${
-                  graphView === v
-                    ? "bg-gray-900 text-white"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
-                }`}
-              >
-                {graphViewLabels[v]}
-              </button>
-            ))}
-          </div>
-
-          <div className="flex overflow-hidden" style={{ height: "calc(100vh - 152px)" }}>
-            {/* Graph (60%) */}
-            <div className="w-[60%] h-full p-4">
-              {graphView === "similarity" && (
-                <RecSimilarityGraph
-                  data={graphData as GraphData}
-                  selectedId={selectedId}
-                  onSelectNode={handleSelectNode}
-                  filterMainstream={filterMainstream}
-                />
-              )}
-              {graphView === "clusters" && (
-                <HubClustersGraph
-                  data={graphData as GraphData}
-                  selectedId={selectedId}
-                  onSelectNode={handleSelectNode}
-                  filterMainstream={filterMainstream}
-                />
-              )}
-              {graphView === "bipartite" && (
-                <BipartiteGraph
-                  data={graphData as GraphData}
-                  selectedId={selectedId}
-                  onSelectNode={handleSelectNode}
-                  filterMainstream={filterMainstream}
-                />
-              )}
-              {graphView === "rings" && (
-                <ConcentricRingsGraph
-                  data={graphData as GraphData}
-                  selectedId={selectedId}
-                  onSelectNode={handleSelectNode}
-                  filterMainstream={filterMainstream}
-                />
-              )}
-            </div>
-            {/* List (40%) */}
-            <div className="w-[40%] h-full border-l bg-white">
-              <NetworkList
-                data={graphData as GraphData}
-                selectedId={selectedId}
-                onSelectNode={handleSelectNode}
-                filterMainstream={filterMainstream}
-              />
-            </div>
-          </div>
-        </>
+        <div className="flex-1 overflow-hidden" style={{ height: "calc(100vh - 120px)" }}>
+          <NetworkList
+            data={graphData as GraphData}
+            selectedId={null}
+            onSelectNode={() => {}}
+            filterMainstream={filterMainstream}
+          />
+        </div>
       )}
     </main>
   );

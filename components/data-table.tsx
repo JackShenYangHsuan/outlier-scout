@@ -24,19 +24,29 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import type { Person } from "@/lib/types";
+import { countryFlag } from "@/lib/country-flags";
 
-const CATEGORY_COLORS: Record<string, string> = {
-  math: "bg-blue-100 text-blue-800",
-  programming: "bg-purple-100 text-purple-800",
-  chess: "bg-amber-100 text-amber-800",
-  poker: "bg-red-100 text-red-800",
-  esports: "bg-green-100 text-green-800",
-  career: "bg-indigo-100 text-indigo-800",
-  curated: "bg-pink-100 text-pink-800",
-  academic: "bg-cyan-100 text-cyan-800",
-  security: "bg-orange-100 text-orange-800",
-  sports: "bg-emerald-100 text-emerald-800",
-};
+const SPIKE_TAGS: { key: string; char: string; color: string }[] = [
+  { key: "Academic Research", char: "A", color: "bg-blue-100 text-blue-700" },
+  { key: "Technical Builder", char: "T", color: "bg-emerald-100 text-emerald-700" },
+  { key: "Operator/Exec", char: "O", color: "bg-amber-100 text-amber-700" },
+  { key: "Creative/Media", char: "M", color: "bg-purple-100 text-purple-700" },
+  { key: "Competition Winner", char: "W", color: "bg-rose-100 text-rose-700" },
+];
+const SPIKE_TAG_MAP = Object.fromEntries(SPIKE_TAGS.map((t) => [t.key, t]));
+
+function parseSpikeTags(text: string): { tags: string[]; rest: string } {
+  const tags: string[] = [];
+  let remaining = text;
+  const re = /^\[([^\]]+)\]/;
+  let match;
+  while ((match = re.exec(remaining))) {
+    tags.push(match[1]);
+    remaining = remaining.slice(match[0].length);
+  }
+  return { tags, rest: remaining.trim() };
+}
+
 
 function ScoreBadge({ score, palette = "green" }: { score: number; palette?: "green" | "blue" | "purple" }) {
   const palettes = {
@@ -79,39 +89,27 @@ function ScoreBadge({ score, palette = "green" }: { score: number; palette?: "gr
 
 const columns: ColumnDef<Person>[] = [
   {
-    accessorKey: "combinedScore",
-    header: "Score",
-    size: 70,
-    cell: ({ row }) => <ScoreBadge score={row.original.combinedScore} />,
-    sortDescFirst: true,
-  },
-  {
     accessorKey: "name",
     header: "Name",
-    size: 140,
-    cell: ({ row }) => (
-      <div className="font-medium text-sm whitespace-nowrap truncate">{row.original.name}</div>
-    ),
-  },
-  {
-    accessorKey: "twitter",
-    header: "Twitter",
-    size: 120,
+    size: 160,
     cell: ({ row }) => {
       const handle = row.original.twitter;
-      if (!handle) return <span className="text-muted-foreground">-</span>;
-      const clean = handle.replace("@", "");
-      return (
-        <a
-          href={`https://x.com/${clean}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline whitespace-nowrap text-xs"
-          onClick={(e) => e.stopPropagation()}
-        >
-          {handle}
-        </a>
-      );
+      const name = row.original.name;
+      if (handle) {
+        const clean = handle.replace(/^@/, "");
+        return (
+          <a
+            href={`https://x.com/${clean}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-sm whitespace-nowrap truncate text-blue-600 hover:underline block"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {name}
+          </a>
+        );
+      }
+      return <div className="font-medium text-sm whitespace-nowrap truncate">{name}</div>;
     },
   },
   {
@@ -122,24 +120,25 @@ const columns: ColumnDef<Person>[] = [
     sortDescFirst: true,
   },
   {
-    accessorKey: "startupLikelihood",
-    header: "Startup",
-    size: 65,
-    cell: ({ row }) => {
-      const s = row.original.startupLikelihood;
-      if (s === 0) return <span className="text-muted-foreground text-sm">-</span>;
-      return <ScoreBadge score={s} palette="purple" />;
-    },
-    sortDescFirst: true,
-  },
-  {
     accessorKey: "company",
     header: "Company",
     size: 150,
     cell: ({ row }) => {
       const val = row.original.company;
+      const url = row.original.companyUrl;
       if (!val) return <span className="text-muted-foreground/40 text-sm">-</span>;
-      return <div className="text-sm font-medium truncate">{val}</div>;
+      const domain = url ? new URL(url).hostname : null;
+      const favicon = domain ? `https://www.google.com/s2/favicons?sz=16&domain=${domain}` : null;
+      return (
+        <div className="flex items-center gap-1.5 min-w-0">
+          {favicon && <img src={favicon} alt="" width={16} height={16} className="shrink-0 rounded-sm" />}
+          {url ? (
+            <a href={url} target="_blank" rel="noopener noreferrer" className="text-sm font-medium truncate text-blue-600 hover:text-blue-800 hover:underline">{val}</a>
+          ) : (
+            <span className="text-sm font-medium truncate">{val}</span>
+          )}
+        </div>
+      );
     },
   },
   {
@@ -195,75 +194,30 @@ const columns: ColumnDef<Person>[] = [
     },
   },
   {
-    accessorKey: "categories",
-    header: "Categories",
-    size: 110,
-    cell: ({ row }) => (
-      <div className="flex gap-0.5 overflow-hidden">
-        {row.original.categories.slice(0, 2).map((cat) => (
-          <span
-            key={cat}
-            className={`inline-flex px-1.5 py-0 rounded text-[10px] font-medium whitespace-nowrap ${CATEGORY_COLORS[cat] || "bg-gray-100 text-gray-600"}`}
-          >
-            {cat}
-          </span>
-        ))}
-        {row.original.categories.length > 2 && (
-          <span className="text-[10px] text-muted-foreground/60">+{row.original.categories.length - 2}</span>
-        )}
-      </div>
-    ),
-    filterFn: (row, _, filterValue) => {
-      if (!filterValue || filterValue === "all") return true;
-      return row.original.categories.includes(filterValue);
-    },
-  },
-  {
     accessorKey: "achievements",
     header: "Spikes",
     size: 220,
     cell: ({ row }) => {
       const text = row.original.achievements;
-      return <div className="text-xs text-muted-foreground truncate">{text}</div>;
-    },
-  },
-  {
-    accessorKey: "notes",
-    header: "Notes",
-    size: 240,
-    cell: ({ row }) => {
-      const notes = row.original.notes;
-      if (!notes) return null;
-      const isRare = notes.includes("RARE COMBO") || notes.includes("rare combo");
-      const isMusk = notes.includes("Musk") || notes.includes("xAI") || notes.includes("SpaceX");
-      let displayText = notes;
-      if (isRare) displayText = displayText.replace(/RARE COMBO[:\s|]*/i, "").trim();
+      if (!text) return <span className="text-muted-foreground/40 text-sm">-</span>;
+      const { tags, rest } = parseSpikeTags(text);
       return (
         <div className="flex items-center gap-1 min-w-0">
-          {isRare && <span className="shrink-0 px-1 py-0 rounded text-[10px] font-semibold bg-yellow-400 text-yellow-900">RARE</span>}
-          {isMusk && <span className="shrink-0 px-1 py-0 rounded text-[10px] font-semibold bg-violet-400 text-violet-900">MUSK</span>}
-          <span className="text-xs text-muted-foreground truncate">{displayText}</span>
+          {tags.map((tag) => (
+            <span key={tag} className={`shrink-0 inline-flex items-center justify-center w-5 h-5 rounded text-xs font-medium ${(SPIKE_TAG_MAP[tag]?.color || "bg-gray-100 text-gray-700")}`} title={tag}>{SPIKE_TAG_MAP[tag]?.char || tag[0]}</span>
+          ))}
+          {rest && <span className="text-xs text-muted-foreground truncate">{rest}</span>}
         </div>
       );
     },
   },
-  {
-    accessorKey: "country",
-    header: "Country",
-    size: 80,
-    cell: ({ row }) => (
-      <span className="text-sm text-muted-foreground whitespace-nowrap">{row.original.country}</span>
-    ),
-  },
 ];
 
-type Preset = "unfunded_founders" | "recently_left" | "pre_raise" | "hidden_gems" | null;
+type Preset = "recently_left" | "hidden_gems" | null;
 
 const PRESETS: { id: Preset; label: string; description: string }[] = [
-  { id: "unfunded_founders", label: "Unfunded Founders", description: "Startup signal but no funding yet" },
   { id: "recently_left", label: "Recently Left", description: "Just left a major company" },
-  { id: "pre_raise", label: "Pre-Raise Startups", description: "All people with startup signal" },
-  { id: "hidden_gems", label: "Hidden Gems", description: "High outlier score, no startup signal yet" },
+  { id: "hidden_gems", label: "Hidden Gems", description: "High outlier score (95+)" },
 ];
 
 function MultiSelectDropdown({
@@ -351,19 +305,17 @@ const STAGES = ["Seed", "Series A", "Series B", "Series C", "Series D+", "IPO", 
 
 export function DataTable({ data }: { data: Person[] }) {
   const [sorting, setSorting] = useState<SortingState>([
-    { id: "combinedScore", desc: true },
+    { id: "outlierScore", desc: true },
   ]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [globalFilter, setGlobalFilter] = useState("");
-  const [categoryFilters, setCategoryFilters] = useState<Set<string>>(new Set());
   const [twitterOnly, setTwitterOnly] = useState(false);
-  const [startupFilters, setStartupFilters] = useState<Set<string>>(new Set());
   const [fundingFilters, setFundingFilters] = useState<Set<string>>(new Set());
   const [stageFilters, setStageFilters] = useState<Set<string>>(new Set());
   const [activePreset, setActivePreset] = useState<Preset>(null);
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
 
-  const hasActiveFilters = activePreset || startupFilters.size > 0 || fundingFilters.size > 0 || stageFilters.size > 0 || categoryFilters.size > 0 || twitterOnly || globalFilter;
+  const hasActiveFilters = activePreset || fundingFilters.size > 0 || stageFilters.size > 0 || twitterOnly || globalFilter;
 
   const applyPreset = (preset: Preset) => {
     if (activePreset === preset) {
@@ -372,24 +324,13 @@ export function DataTable({ data }: { data: Person[] }) {
     }
     setActivePreset(preset);
     setStageFilters(new Set());
-    setCategoryFilters(new Set());
     setTwitterOnly(false);
     setGlobalFilter("");
     switch (preset) {
-      case "unfunded_founders":
-        setStartupFilters(new Set(["has_signal"]));
-        setFundingFilters(new Set(["unfunded"]));
-        break;
       case "recently_left":
-        setStartupFilters(new Set());
-        setFundingFilters(new Set());
-        break;
-      case "pre_raise":
-        setStartupFilters(new Set(["has_signal"]));
         setFundingFilters(new Set());
         break;
       case "hidden_gems":
-        setStartupFilters(new Set(["no_signal"]));
         setFundingFilters(new Set());
         break;
     }
@@ -400,7 +341,6 @@ export function DataTable({ data }: { data: Person[] }) {
     setStartupFilters(new Set());
     setFundingFilters(new Set());
     setStageFilters(new Set());
-    setCategoryFilters(new Set());
     setTwitterOnly(false);
     setGlobalFilter("");
   };
@@ -408,7 +348,6 @@ export function DataTable({ data }: { data: Person[] }) {
   const filteredData = useMemo(() => {
     let d = data;
     if (twitterOnly) d = d.filter((p) => p.twitter);
-    if (categoryFilters.size > 0) d = d.filter((p) => p.categories.some((c) => categoryFilters.has(c)));
     if (startupFilters.size > 0) {
       d = d.filter((p) => {
         if (startupFilters.has("has_signal") && p.startupLikelihood > 0) return true;
@@ -432,13 +371,8 @@ export function DataTable({ data }: { data: Person[] }) {
       d = d.filter((p) => p.outlierScore >= 95);
     }
     return d;
-  }, [data, twitterOnly, categoryFilters, startupFilters, fundingFilters, stageFilters, activePreset]);
+  }, [data, twitterOnly, startupFilters, fundingFilters, stageFilters, activePreset]);
 
-  const allCategories = useMemo(() => {
-    const cats = new Set<string>();
-    data.forEach((p) => p.categories.forEach((c) => cats.add(c)));
-    return Array.from(cats).sort();
-  }, [data]);
 
   const table = useReactTable({
     data: filteredData,
@@ -537,13 +471,18 @@ export function DataTable({ data }: { data: Person[] }) {
             selected={stageFilters}
             onChange={(next) => { setStageFilters(next); setActivePreset(null); }}
           />
-          <MultiSelectDropdown
-            label="Category"
-            options={allCategories.map((c) => ({ value: c, label: c }))}
-            selected={categoryFilters}
-            onChange={(next) => { setCategoryFilters(next); setActivePreset(null); }}
-          />
         </div>
+      </div>
+
+      {/* Spike legend */}
+      <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
+        <span className="font-medium">Spike types:</span>
+        {SPIKE_TAGS.map((t) => (
+          <span key={t.key} className="flex items-center gap-1">
+            <span className={`inline-flex items-center justify-center w-4 h-4 rounded text-[10px] font-medium ${t.color}`}>{t.char}</span>
+            {t.key}
+          </span>
+        ))}
       </div>
 
       {/* Table */}
@@ -651,7 +590,14 @@ export function DataTable({ data }: { data: Person[] }) {
                   {selectedPerson.company && (
                     <div>
                       <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">Company</div>
-                      <div className="text-sm font-medium">{selectedPerson.company}</div>
+                      <div className="flex items-center gap-1.5">
+                        {selectedPerson.companyUrl && (() => { try { const d = new URL(selectedPerson.companyUrl).hostname; return <img src={`https://www.google.com/s2/favicons?sz=16&domain=${d}`} alt="" width={16} height={16} className="shrink-0 rounded-sm" />; } catch { return null; } })()}
+                        {selectedPerson.companyUrl ? (
+                          <a href={selectedPerson.companyUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline">{selectedPerson.company}</a>
+                        ) : (
+                          <div className="text-sm font-medium">{selectedPerson.company}</div>
+                        )}
+                      </div>
                     </div>
                   )}
                   {selectedPerson.currentActivity && (
@@ -693,40 +639,34 @@ export function DataTable({ data }: { data: Person[] }) {
                     </a>
                   )}
                   {selectedPerson.country && (
-                    <span className="text-muted-foreground">{selectedPerson.country}</span>
+                    <span className="text-muted-foreground">{countryFlag(selectedPerson.country)} {selectedPerson.country}</span>
                   )}
                 </div>
 
-                {/* Categories */}
-                {selectedPerson.categories.length > 0 && (
-                  <div className="flex gap-1.5 flex-wrap">
-                    {selectedPerson.categories.map((cat) => (
-                      <Badge key={cat} variant="secondary" className={`${CATEGORY_COLORS[cat] || ""}`}>
-                        {cat}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-
                 {/* Achievements */}
-                {selectedPerson.achievements && (
-                  <div>
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">Achievements / Spikes</div>
-                    <div className="space-y-1">
-                      {selectedPerson.achievements.split(" | ").filter(Boolean).map((item, i) => (
-                        <div key={i} className="text-sm pl-3 border-l-2 border-muted-foreground/20">{item}</div>
-                      ))}
+                {selectedPerson.achievements && (() => {
+                  const { tags, rest } = parseSpikeTags(selectedPerson.achievements);
+                  return (
+                    <div>
+                      <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">Achievements / Spikes</div>
+                      {tags.length > 0 && (
+                        <div className="flex flex-wrap gap-1 mb-2">
+                          {tags.map((tag) => (
+                            <span key={tag} className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium ${(SPIKE_TAG_MAP[tag]?.color || "bg-gray-100 text-gray-700")}`}><span className="font-bold">{SPIKE_TAG_MAP[tag]?.char || tag[0]}</span>{tag}</span>
+                          ))}
+                        </div>
+                      )}
+                      {rest && (
+                        <div className="space-y-1">
+                          {rest.split(" | ").filter(Boolean).map((item, i) => (
+                            <div key={i} className="text-sm pl-3 border-l-2 border-muted-foreground/20">{item}</div>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                  </div>
-                )}
+                  );
+                })()}
 
-                {/* Notes */}
-                {selectedPerson.notes && (
-                  <div>
-                    <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1">Notes</div>
-                    <div className="text-sm text-muted-foreground whitespace-pre-wrap">{selectedPerson.notes}</div>
-                  </div>
-                )}
               </div>
             </>
           )}

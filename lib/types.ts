@@ -12,6 +12,7 @@ export interface Person {
   currentActivity: string;
   fundingInfo: string;
   company: string;
+  companyUrl: string;
   investors: string;
   fundingSeries: string;
 }
