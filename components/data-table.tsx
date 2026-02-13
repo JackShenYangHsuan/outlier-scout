@@ -21,7 +21,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import type { Person } from "@/lib/types";
 import { countryFlag } from "@/lib/country-flags";
@@ -89,9 +88,16 @@ function ScoreBadge({ score, palette = "green" }: { score: number; palette?: "gr
 
 const columns: ColumnDef<Person>[] = [
   {
+    accessorKey: "outlierScore",
+    header: "Outlier",
+    size: 55,
+    cell: ({ row }) => <ScoreBadge score={row.original.outlierScore} palette="blue" />,
+    sortDescFirst: true,
+  },
+  {
     accessorKey: "name",
     header: "Name",
-    size: 160,
+    size: 130,
     cell: ({ row }) => {
       const handle = row.original.twitter;
       const name = row.original.name;
@@ -113,16 +119,27 @@ const columns: ColumnDef<Person>[] = [
     },
   },
   {
-    accessorKey: "outlierScore",
-    header: "Outlier",
-    size: 65,
-    cell: ({ row }) => <ScoreBadge score={row.original.outlierScore} palette="blue" />,
-    sortDescFirst: true,
+    accessorKey: "achievements",
+    header: "Spikes",
+    size: 180,
+    cell: ({ row }) => {
+      const text = row.original.achievements;
+      if (!text) return <span className="text-muted-foreground/40 text-sm">-</span>;
+      const { tags, rest } = parseSpikeTags(text);
+      return (
+        <div className="flex items-center gap-1 min-w-0">
+          {tags.map((tag) => (
+            <span key={tag} className={`shrink-0 inline-flex items-center justify-center w-5 h-5 rounded text-xs font-medium ${(SPIKE_TAG_MAP[tag]?.color || "bg-gray-100 text-gray-700")}`} title={tag}>{SPIKE_TAG_MAP[tag]?.char || tag[0]}</span>
+          ))}
+          {rest && <span className="text-xs text-muted-foreground truncate">{rest}</span>}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "company",
     header: "Company",
-    size: 150,
+    size: 130,
     cell: ({ row }) => {
       const val = row.original.company;
       const url = row.original.companyUrl;
@@ -142,19 +159,9 @@ const columns: ColumnDef<Person>[] = [
     },
   },
   {
-    accessorKey: "currentActivity",
-    header: "Current",
-    size: 180,
-    cell: ({ row }) => {
-      const val = row.original.currentActivity;
-      if (!val) return <span className="text-muted-foreground/40 text-sm">-</span>;
-      return <div className="text-sm text-muted-foreground truncate">{val}</div>;
-    },
-  },
-  {
     accessorKey: "fundingSeries",
     header: "Stage",
-    size: 85,
+    size: 70,
     cell: ({ row }) => {
       const val = row.original.fundingSeries;
       if (!val) return <span className="text-muted-foreground/40 text-sm">-</span>;
@@ -176,7 +183,7 @@ const columns: ColumnDef<Person>[] = [
   {
     accessorKey: "investors",
     header: "Investors",
-    size: 200,
+    size: 160,
     cell: ({ row }) => {
       const val = row.original.investors;
       if (!val) return <span className="text-muted-foreground/40 text-sm">-</span>;
@@ -184,9 +191,21 @@ const columns: ColumnDef<Person>[] = [
     },
   },
   {
+    id: "kv",
+    header: "KV",
+    size: 35,
+    cell: ({ row }) => {
+      const inv = row.original.investors || "";
+      const isKV = /khosla/i.test(inv);
+      return isKV
+        ? <span className="inline-flex px-1.5 py-0.5 rounded bg-green-100 text-green-700 text-xs font-medium">yes</span>
+        : <span className="inline-flex px-1.5 py-0.5 rounded bg-gray-100 text-gray-400 text-xs font-medium">no</span>;
+    },
+  },
+  {
     accessorKey: "fundingInfo",
     header: "Funding",
-    size: 200,
+    size: 150,
     cell: ({ row }) => {
       const val = row.original.fundingInfo;
       if (!val) return <span className="text-muted-foreground/40 text-sm">-</span>;
@@ -194,31 +213,17 @@ const columns: ColumnDef<Person>[] = [
     },
   },
   {
-    accessorKey: "achievements",
-    header: "Spikes",
-    size: 220,
+    accessorKey: "currentActivity",
+    header: "Current",
+    size: 150,
     cell: ({ row }) => {
-      const text = row.original.achievements;
-      if (!text) return <span className="text-muted-foreground/40 text-sm">-</span>;
-      const { tags, rest } = parseSpikeTags(text);
-      return (
-        <div className="flex items-center gap-1 min-w-0">
-          {tags.map((tag) => (
-            <span key={tag} className={`shrink-0 inline-flex items-center justify-center w-5 h-5 rounded text-xs font-medium ${(SPIKE_TAG_MAP[tag]?.color || "bg-gray-100 text-gray-700")}`} title={tag}>{SPIKE_TAG_MAP[tag]?.char || tag[0]}</span>
-          ))}
-          {rest && <span className="text-xs text-muted-foreground truncate">{rest}</span>}
-        </div>
-      );
+      const val = row.original.currentActivity;
+      if (!val) return <span className="text-muted-foreground/40 text-sm">-</span>;
+      return <div className="text-sm text-muted-foreground truncate">{val}</div>;
     },
   },
 ];
 
-type Preset = "recently_left" | "hidden_gems" | null;
-
-const PRESETS: { id: Preset; label: string; description: string }[] = [
-  { id: "recently_left", label: "Recently Left", description: "Just left a major company" },
-  { id: "hidden_gems", label: "Hidden Gems", description: "High outlier score (95+)" },
-];
 
 function MultiSelectDropdown({
   label,
@@ -308,79 +313,37 @@ export function DataTable({ data }: { data: Person[] }) {
     { id: "outlierScore", desc: true },
   ]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [globalFilter, setGlobalFilter] = useState("");
-  const [twitterOnly, setTwitterOnly] = useState(false);
-  const [fundingFilters, setFundingFilters] = useState<Set<string>>(new Set());
-  const [stageFilters, setStageFilters] = useState<Set<string>>(new Set());
-  const [activePreset, setActivePreset] = useState<Preset>(null);
+  const [companyOnly, setCompanyOnly] = useState(true);
+  const [kvFilter, setKvFilter] = useState<Set<string>>(new Set(["no"]));
+  const [stageFilters, setStageFilters] = useState<Set<string>>(new Set(["Seed", "Series A", "Series B", "Bootstrapped"]));
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
 
-  const hasActiveFilters = activePreset || fundingFilters.size > 0 || stageFilters.size > 0 || twitterOnly || globalFilter;
-
-  const applyPreset = (preset: Preset) => {
-    if (activePreset === preset) {
-      resetFilters();
-      return;
-    }
-    setActivePreset(preset);
-    setStageFilters(new Set());
-    setTwitterOnly(false);
-    setGlobalFilter("");
-    switch (preset) {
-      case "recently_left":
-        setFundingFilters(new Set());
-        break;
-      case "hidden_gems":
-        setFundingFilters(new Set());
-        break;
-    }
-  };
+  const hasActiveFilters = stageFilters.size > 0 || companyOnly || kvFilter.size > 0;
 
   const resetFilters = () => {
-    setActivePreset(null);
-    setStartupFilters(new Set());
-    setFundingFilters(new Set());
-    setStageFilters(new Set());
-    setTwitterOnly(false);
-    setGlobalFilter("");
+    setStageFilters(new Set(["Seed", "Series A", "Series B", "Bootstrapped"]));
+    setCompanyOnly(true);
+    setKvFilter(new Set(["no"]));
   };
 
   const filteredData = useMemo(() => {
     let d = data;
-    if (twitterOnly) d = d.filter((p) => p.twitter);
-    if (startupFilters.size > 0) {
-      d = d.filter((p) => {
-        if (startupFilters.has("has_signal") && p.startupLikelihood > 0) return true;
-        if (startupFilters.has("no_signal") && p.startupLikelihood === 0) return true;
-        return false;
-      });
-    }
-    if (fundingFilters.size > 0) {
-      d = d.filter((p) => {
-        if (fundingFilters.has("funded") && p.fundingInfo) return true;
-        if (fundingFilters.has("unfunded") && !p.fundingInfo) return true;
-        return false;
-      });
+    if (companyOnly) d = d.filter((p) => p.company);
+    if (kvFilter.size > 0 && kvFilter.size < 2) {
+      if (kvFilter.has("yes")) d = d.filter((p) => /khosla/i.test(p.investors || ""));
+      if (kvFilter.has("no")) d = d.filter((p) => !/khosla/i.test(p.investors || ""));
     }
     if (stageFilters.size > 0) d = d.filter((p) => stageFilters.has(p.fundingSeries));
-    // Preset-specific filters
-    if (activePreset === "recently_left") {
-      d = d.filter((p) => /\bleft\b/i.test(p.currentActivity));
-    }
-    if (activePreset === "hidden_gems") {
-      d = d.filter((p) => p.outlierScore >= 95);
-    }
     return d;
-  }, [data, twitterOnly, startupFilters, fundingFilters, stageFilters, activePreset]);
+  }, [data, companyOnly, kvFilter, stageFilters]);
 
 
   const table = useReactTable({
     data: filteredData,
     columns,
-    state: { sorting, columnFilters, globalFilter },
+    state: { sorting, columnFilters },
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
-    onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -389,7 +352,6 @@ export function DataTable({ data }: { data: Person[] }) {
   });
 
   const withTwitter = data.filter((p) => p.twitter).length;
-  const withStartup = data.filter((p) => p.startupLikelihood > 0).length;
 
   return (
     <div className="space-y-4">
@@ -397,26 +359,35 @@ export function DataTable({ data }: { data: Person[] }) {
       <div className="flex gap-6 text-sm text-muted-foreground">
         <span><strong className="text-foreground">{data.length.toLocaleString()}</strong> people</span>
         <span><strong className="text-foreground">{withTwitter}</strong> with Twitter</span>
-        <span><strong className="text-foreground">{withStartup}</strong> with startup signal</span>
         <span><strong className="text-foreground">{filteredData.length.toLocaleString()}</strong> showing</span>
       </div>
 
-      {/* Preset chips */}
+      {/* Filters */}
       <div className="flex items-center gap-2 flex-wrap">
-        {PRESETS.map((preset) => (
-          <button
-            key={preset.id}
-            onClick={() => applyPreset(preset.id)}
-            title={preset.description}
-            className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
-              activePreset === preset.id
-                ? "bg-foreground text-background"
-                : "bg-muted text-muted-foreground hover:bg-muted/80"
-            }`}
-          >
-            {preset.label}
-          </button>
-        ))}
+        <label className="flex items-center gap-2 text-sm cursor-pointer">
+          <input
+            type="checkbox"
+            checked={companyOnly}
+            onChange={(e) => setCompanyOnly(e.target.checked)}
+            className="rounded"
+          />
+          Has Company
+        </label>
+        <MultiSelectDropdown
+          label="KV"
+          options={[
+            { value: "yes", label: "Yes" },
+            { value: "no", label: "No" },
+          ]}
+          selected={kvFilter}
+          onChange={setKvFilter}
+        />
+        <MultiSelectDropdown
+          label="Stage"
+          options={STAGES.map((s) => ({ value: s, label: s }))}
+          selected={stageFilters}
+          onChange={setStageFilters}
+        />
         {hasActiveFilters && (
           <button
             onClick={resetFilters}
@@ -425,53 +396,6 @@ export function DataTable({ data }: { data: Person[] }) {
             Reset
           </button>
         )}
-      </div>
-
-      {/* Filters */}
-      <div className="space-y-2">
-        <div className="flex items-center gap-3">
-          <Input
-            placeholder="Search by name..."
-            value={globalFilter}
-            onChange={(e) => setGlobalFilter(e.target.value)}
-            className="max-w-xs"
-          />
-          <label className="flex items-center gap-2 text-sm cursor-pointer">
-            <input
-              type="checkbox"
-              checked={twitterOnly}
-              onChange={(e) => setTwitterOnly(e.target.checked)}
-              className="rounded"
-            />
-            Has Twitter
-          </label>
-        </div>
-        <div className="flex items-center gap-2 flex-wrap">
-          <MultiSelectDropdown
-            label="Startup"
-            options={[
-              { value: "has_signal", label: "Has Signal" },
-              { value: "no_signal", label: "No Signal" },
-            ]}
-            selected={startupFilters}
-            onChange={(next) => { setStartupFilters(next); setActivePreset(null); }}
-          />
-          <MultiSelectDropdown
-            label="Funding"
-            options={[
-              { value: "funded", label: "Funded" },
-              { value: "unfunded", label: "Unfunded" },
-            ]}
-            selected={fundingFilters}
-            onChange={(next) => { setFundingFilters(next); setActivePreset(null); }}
-          />
-          <MultiSelectDropdown
-            label="Stage"
-            options={STAGES.map((s) => ({ value: s, label: s }))}
-            selected={stageFilters}
-            onChange={(next) => { setStageFilters(next); setActivePreset(null); }}
-          />
-        </div>
       </div>
 
       {/* Spike legend */}
@@ -487,7 +411,7 @@ export function DataTable({ data }: { data: Person[] }) {
 
       {/* Table */}
       <div className="border rounded-lg overflow-auto flex-1" style={{ maxHeight: "calc(100vh - 220px)" }}>
-        <Table className="table-fixed min-w-[2200px]">
+        <Table className="table-fixed min-w-[1060px]">
           <TableHeader className="sticky top-0 z-10 bg-background">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
@@ -514,11 +438,7 @@ export function DataTable({ data }: { data: Person[] }) {
                   key={row.id}
                   onClick={() => setSelectedPerson(row.original)}
                   className={`cursor-pointer hover:bg-muted/60 ${
-                    row.original.combinedScore >= 90
-                      ? "bg-green-50/50"
-                      : row.original.startupLikelihood > 0
-                        ? "bg-amber-50/30"
-                        : ""
+                    row.original.outlierScore >= 90 ? "bg-green-50/50" : ""
                   }`}
                 >
                   {row.getVisibleCells().map((cell) => (
@@ -569,20 +489,10 @@ export function DataTable({ data }: { data: Person[] }) {
             <>
               <DialogTitle className="text-xl">{selectedPerson.name}</DialogTitle>
               <div className="mt-4 space-y-4">
-                {/* Score row */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="rounded-lg bg-muted p-3">
-                    <div className="text-xs text-muted-foreground mb-1">Combined Score</div>
-                    <div className="text-2xl font-bold">{selectedPerson.combinedScore}</div>
-                  </div>
-                  <div className="rounded-lg bg-muted p-3">
-                    <div className="text-xs text-muted-foreground mb-1">Outlier Score</div>
-                    <div className="text-2xl font-bold">{selectedPerson.outlierScore}</div>
-                  </div>
-                  <div className="rounded-lg bg-muted p-3">
-                    <div className="text-xs text-muted-foreground mb-1">Startup Likelihood</div>
-                    <div className="text-2xl font-bold">{selectedPerson.startupLikelihood || "-"}</div>
-                  </div>
+                {/* Score */}
+                <div className="rounded-lg bg-muted p-3 inline-flex flex-col">
+                  <div className="text-xs text-muted-foreground mb-1">Outlier Score</div>
+                  <div className="text-2xl font-bold">{selectedPerson.outlierScore}</div>
                 </div>
 
                 {/* Key info */}
