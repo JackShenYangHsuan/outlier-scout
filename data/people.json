@@ -1787,7 +1787,7 @@
   {
     "id": 2054,
     "name": "Brett Harrison",
-    "twitter": "@BrettHarrison88",
+    "twitter": "@BrettHarrison",
     "country": "USA",
     "outlierScore": 93,
     "startupLikelihood": 100,
@@ -2184,7 +2184,7 @@
   {
     "id": 7692,
     "name": "Mohamed Habib",
-    "twitter": "@_motatoes_",
+    "twitter": "",
     "country": "USA",
     "outlierScore": 93,
     "startupLikelihood": 100,
@@ -2791,7 +2791,7 @@
   {
     "id": 7463,
     "name": "Soumith Chintala",
-    "twitter": "@soabormeister",
+    "twitter": "@soumithchintala",
     "country": "USA",
     "outlierScore": 95,
     "startupLikelihood": 95,
@@ -5860,7 +5860,7 @@
   },
   {
     "name": "Jackson Gabbard",
-    "twitter": "@jgbbrd",
+    "twitter": "@gabbard_jackson",
     "country": "United Kingdom",
     "outlierScore": 82,
     "startupLikelihood": 100,
@@ -7536,7 +7536,7 @@
   {
     "id": 7587,
     "name": "Bryn Mooser",
-    "twitter": "@braborkowski",
+    "twitter": "@brynmooser",
     "country": "USA",
     "outlierScore": 86,
     "startupLikelihood": 85,
@@ -8249,7 +8249,7 @@
   {
     "id": 7586,
     "name": "Natasha Lyonne",
-    "twitter": "@naborkowski",
+    "twitter": "@nlyonne",
     "country": "USA",
     "outlierScore": 85,
     "startupLikelihood": 80,
@@ -9141,7 +9141,7 @@
   {
     "id": 7455,
     "name": "Yejin Choi",
-    "twitter": "@yabormeister",
+    "twitter": "@YejinChoinka",
     "country": "USA",
     "outlierScore": 95,
     "startupLikelihood": 45,
@@ -9342,7 +9342,7 @@
   {
     "id": 7465,
     "name": "Saining Xie",
-    "twitter": "@saabormeister",
+    "twitter": "@sainingxie",
     "country": "USA",
     "outlierScore": 91,
     "startupLikelihood": 40,
