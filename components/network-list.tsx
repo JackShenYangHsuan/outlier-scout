@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import Image from "next/image";
 import type { GraphData, Recommendation } from "@/lib/graph-types";
 import companiesRaw from "@/data/network_companies.json";
 import { MultiSelectDropdown } from "@/components/multi-select-dropdown";
@@ -93,18 +94,19 @@ function formatFollowers(n: number): string {
 }
 
 function Avatar({ username, name, size = 24 }: { username: string; name?: string; size?: number }) {
+  const [failed, setFailed] = useState(false);
+  const src = failed
+    ? `https://ui-avatars.com/api/?name=${encodeURIComponent(name || username)}&size=${size}&background=random&font-size=0.4`
+    : `https://unavatar.io/twitter/${username}`;
   return (
-    <img
-      src={`https://unavatar.io/twitter/${username}`}
+    <Image
+      src={src}
       alt={name || username}
       width={size}
       height={size}
       className="rounded-full bg-gray-200 object-cover shrink-0"
-      loading="lazy"
-      onError={(e) => {
-        (e.target as HTMLImageElement).src =
-          `https://ui-avatars.com/api/?name=${encodeURIComponent(name || username)}&size=${size}&background=random&font-size=0.4`;
-      }}
+      unoptimized={failed}
+      onError={() => setFailed(true)}
     />
   );
 }
