@@ -242,7 +242,7 @@ const columns: ColumnDef<Person>[] = [
 
 
 
-const STAGES = ["Seed", "Series A", "Series B", "Series C", "Series D+", "IPO", "Acquired", "Bootstrapped"];
+const STAGES = ["Pre-Seed", "Seed", "Series A", "Series B", "Series C", "Series D+", "IPO", "Acquired", "Bootstrapped"];
 
 export function DataTable({ data }: { data: Person[] }) {
   const [sorting, setSorting] = useState<SortingState>([
@@ -251,7 +251,7 @@ export function DataTable({ data }: { data: Person[] }) {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [companyFilter, setCompanyFilter] = useState<Set<string>>(new Set(["yes"]));
   const [kvFilter, setKvFilter] = useState<Set<string>>(new Set(["no"]));
-  const [stageFilters, setStageFilters] = useState<Set<string>>(new Set(["Seed", "Series A", "Series B", "Series C", "Bootstrapped"]));
+  const [stageFilters, setStageFilters] = useState<Set<string>>(new Set(["Pre-Seed", "Seed", "Series A", "Series B", "Series C", "Bootstrapped"]));
   const [spikeFilters, setSpikeFilters] = useState<Set<string>>(new Set());
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
 
@@ -259,7 +259,7 @@ export function DataTable({ data }: { data: Person[] }) {
 
   const resetFilters = () => {
     setCompanyFilter(new Set(["yes"]));
-    setStageFilters(new Set(["Seed", "Series A", "Series B", "Series C", "Bootstrapped"]));
+    setStageFilters(new Set(["Pre-Seed", "Seed", "Series A", "Series B", "Series C", "Bootstrapped"]));
     setKvFilter(new Set(["no"]));
     setSpikeFilters(new Set());
   };

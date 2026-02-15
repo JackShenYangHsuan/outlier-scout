@@ -81,7 +81,7 @@
     "company": "AMI Labs",
     "companyUrl": "https://amilabs.xyz",
     "investors": "In talks with Cathay Innovation, Greycroft, Hiro Capital, 20VC, Bpifrance, Daphni, HV Capital",
-    "fundingSeries": "Pre-Seed / Seed (pre-launch)"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7572,
@@ -241,7 +241,7 @@
   },
   {
     "name": "Eric Schmidt",
-    "twitter": "",
+    "twitter": "@ericschmidt",
     "country": "United States",
     "outlierScore": 98,
     "startupLikelihood": 100,
@@ -408,7 +408,7 @@
   },
   {
     "name": "Zach Frankel",
-    "twitter": "",
+    "twitter": "@zfrankel",
     "country": "United States",
     "outlierScore": 97,
     "startupLikelihood": 100,
@@ -419,11 +419,11 @@
     "achievements": "[Technical Builder] Ramp co-founder, now building Long Lake Management Holdings",
     "notes": "RARE COMBO | Previous: Ramp (Co-founder, $13B+ valuation). Now: Long Lake Management Holdings (AI-powered HOA management holding company). Raised $600M+, acquired ~12 companies, ~1,400 employees.",
     "currentActivity": "Co-founder of Long Lake Management Holdings",
-    "fundingInfo": "$600M+ raised",
+    "fundingInfo": "$670M+ raised since late 2023",
     "company": "Long Lake Management Holdings",
     "companyUrl": "https://llmh.com/",
-    "investors": "",
-    "fundingSeries": "Private equity",
+    "investors": "General Catalyst, Thrive Capital, Alpha Wave Global, Khosla Ventures",
+    "fundingSeries": "Series A",
     "id": 7602
   },
   {
@@ -490,7 +490,7 @@
   {
     "id": 7684,
     "name": "Manny Medina",
-    "twitter": "",
+    "twitter": "@medinism",
     "country": "USA",
     "outlierScore": 97,
     "startupLikelihood": 100,
@@ -717,7 +717,7 @@
     "company": "Paradigm",
     "companyUrl": "https://www.paradigm.xyz/",
     "investors": "Yale University, Sequoia Capital",
-    "fundingSeries": "Venture fund",
+    "fundingSeries": "",
     "id": 7605
   },
   {
@@ -758,7 +758,7 @@
     "company": "Project Prometheus",
     "companyUrl": "",
     "investors": "Jeff Bezos",
-    "fundingSeries": "Seed/Launch",
+    "fundingSeries": "Seed",
     "id": 7629
   },
   {
@@ -907,7 +907,7 @@
   {
     "id": 7686,
     "name": "Elias Torres",
-    "twitter": "",
+    "twitter": "@eliast",
     "country": "USA",
     "outlierScore": 96,
     "startupLikelihood": 100,
@@ -928,7 +928,7 @@
   {
     "id": 7689,
     "name": "Samuel Colvin",
-    "twitter": "",
+    "twitter": "@samuel_colvin",
     "country": "UK",
     "outlierScore": 96,
     "startupLikelihood": 100,
@@ -1219,7 +1219,7 @@
     "company": "Qutwo",
     "companyUrl": "https://qutwo.com",
     "investors": "PostScriptum (self-incubated)",
-    "fundingSeries": "Early stage"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7515,
@@ -1265,7 +1265,7 @@
   },
   {
     "name": "Georges Harik",
-    "twitter": "",
+    "twitter": "@gharik",
     "country": "United States",
     "outlierScore": 95,
     "startupLikelihood": 100,
@@ -1348,7 +1348,7 @@
   {
     "id": 7666,
     "name": "Hirsh Jain",
-    "twitter": "",
+    "twitter": "@hirshjain",
     "country": "USA",
     "outlierScore": 95,
     "startupLikelihood": 100,
@@ -1448,7 +1448,7 @@
   {
     "id": 7685,
     "name": "Magnus Müller",
-    "twitter": "",
+    "twitter": "@mamagnus00",
     "country": "Switzerland",
     "outlierScore": 95,
     "startupLikelihood": 100,
@@ -1468,7 +1468,7 @@
   {
     "id": 7696,
     "name": "Baskar Sridharan",
-    "twitter": "",
+    "twitter": "@baskars23",
     "country": "USA",
     "outlierScore": 95,
     "startupLikelihood": 100,
@@ -1615,12 +1615,12 @@
     "company": "37signals",
     "companyUrl": "https://37signals.com",
     "investors": "Bootstrapped",
-    "fundingSeries": "N/A (bootstrapped)"
+    "fundingSeries": "Bootstrapped"
   },
   {
     "id": 7669,
     "name": "Ang Li",
-    "twitter": "",
+    "twitter": "@_anglili",
     "country": "USA",
     "outlierScore": 94,
     "startupLikelihood": 100,
@@ -1695,7 +1695,7 @@
     "company": "Qutwo",
     "companyUrl": "",
     "investors": "Not publicly disclosed",
-    "fundingSeries": "Pre-seed/Bootstrapped"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7218,
@@ -2001,7 +2001,7 @@
   },
   {
     "name": "Drew Baglino",
-    "twitter": "",
+    "twitter": "@baglino",
     "country": "United States",
     "outlierScore": 93,
     "startupLikelihood": 100,
@@ -2023,7 +2023,7 @@
   },
   {
     "name": "Lindon Gao",
-    "twitter": "",
+    "twitter": "@Lindon_Gao",
     "country": "United States",
     "outlierScore": 93,
     "startupLikelihood": 100,
@@ -2184,7 +2184,7 @@
   {
     "id": 7692,
     "name": "Mohamed Habib",
-    "twitter": "",
+    "twitter": "@_motatoes_",
     "country": "USA",
     "outlierScore": 93,
     "startupLikelihood": 100,
@@ -2204,7 +2204,7 @@
   {
     "id": 7697,
     "name": "Gregor Žunič",
-    "twitter": "",
+    "twitter": "@gregpr07",
     "country": "Switzerland",
     "outlierScore": 93,
     "startupLikelihood": 100,
@@ -2540,7 +2540,7 @@
     "company": "Ableton",
     "companyUrl": "https://www.ableton.com",
     "investors": "Bootstrapped/self-funded",
-    "fundingSeries": "Profitable"
+    "fundingSeries": "Bootstrapped"
   },
   {
     "name": "Nadav Abrahami",
@@ -2564,7 +2564,7 @@
   },
   {
     "name": "Eric Zelikman",
-    "twitter": "",
+    "twitter": "@ericzelikman",
     "country": "United States",
     "outlierScore": 92,
     "startupLikelihood": 100,
@@ -2667,7 +2667,7 @@
   {
     "id": 7695,
     "name": "Luke Van Seters",
-    "twitter": "",
+    "twitter": "@lvanseters",
     "country": "USA",
     "outlierScore": 92,
     "startupLikelihood": 100,
@@ -3027,7 +3027,7 @@
     "company": "Pegasystems",
     "companyUrl": "https://www.pega.com",
     "investors": "Public (NASDAQ: PEGA)",
-    "fundingSeries": "Public"
+    "fundingSeries": "IPO"
   },
   {
     "name": "Ofer Shacham",
@@ -3073,7 +3073,7 @@
   },
   {
     "name": "Jeff Cardenas",
-    "twitter": "",
+    "twitter": "@jeffcardn",
     "country": "United States",
     "outlierScore": 91,
     "startupLikelihood": 100,
@@ -3095,7 +3095,7 @@
   {
     "id": 7698,
     "name": "Neil Kinnish",
-    "twitter": "",
+    "twitter": "@neiltak",
     "country": "UK",
     "outlierScore": 91,
     "startupLikelihood": 100,
@@ -3242,7 +3242,7 @@
     "company": "CloudKitchens",
     "companyUrl": "https://cloudkitchens.com",
     "investors": "Saudi Arabia's Public Investment Fund, various",
-    "fundingSeries": "Late stage / Growth"
+    "fundingSeries": "Series D+"
   },
   {
     "id": 7401,
@@ -3349,12 +3349,12 @@
     "company": "Alt Capital",
     "companyUrl": "",
     "investors": "LPs undisclosed",
-    "fundingSeries": "Venture fund",
+    "fundingSeries": "",
     "id": 7613
   },
   {
     "name": "Simon Kohl",
-    "twitter": "",
+    "twitter": "@saakohl",
     "country": "United Kingdom",
     "outlierScore": 90,
     "startupLikelihood": 100,
@@ -3376,7 +3376,7 @@
   },
   {
     "name": "Rhythm Garg",
-    "twitter": "",
+    "twitter": "@rhythmrg",
     "country": "United States",
     "outlierScore": 90,
     "startupLikelihood": 100,
@@ -3418,7 +3418,7 @@
   },
   {
     "name": "Leopold Aschenbrenner",
-    "twitter": "",
+    "twitter": "@leopoldasch",
     "country": "United States",
     "outlierScore": 90,
     "startupLikelihood": 100,
@@ -3521,7 +3521,7 @@
     "company": "Cartesia",
     "companyUrl": "https://cartesia.ai",
     "investors": "Index Ventures",
-    "fundingSeries": "Seed/Series A"
+    "fundingSeries": "Series A"
   },
   {
     "id": 7517,
@@ -3651,11 +3651,11 @@
     "company": "AMI Labs",
     "companyUrl": "https://amilabs.xyz",
     "investors": "In talks with multiple VCs",
-    "fundingSeries": "Pre-Seed / Seed (pre-launch)"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "name": "Yash Patil",
-    "twitter": "",
+    "twitter": "@ypatil125",
     "country": "United States",
     "outlierScore": 89,
     "startupLikelihood": 100,
@@ -3780,7 +3780,7 @@
     "company": "Together AI / Cartesia",
     "companyUrl": "https://www.together.ai",
     "investors": "Salesforce Ventures, Tiger Global, others",
-    "fundingSeries": "Series B (Together AI)"
+    "fundingSeries": "Series B"
   },
   {
     "id": 4000,
@@ -3996,7 +3996,7 @@
   },
   {
     "name": "Linden Li",
-    "twitter": "",
+    "twitter": "@lindensli",
     "country": "United States",
     "outlierScore": 88,
     "startupLikelihood": 100,
@@ -4018,7 +4018,7 @@
   },
   {
     "name": "Andi Peng",
-    "twitter": "",
+    "twitter": "@TheAndiPenguin",
     "country": "United States",
     "outlierScore": 88,
     "startupLikelihood": 100,
@@ -4059,7 +4059,7 @@
   },
   {
     "name": "Mayank Agarwal",
-    "twitter": "",
+    "twitter": "@_magrawal",
     "country": "United States",
     "outlierScore": 88,
     "startupLikelihood": 100,
@@ -4121,7 +4121,7 @@
   },
   {
     "name": "Lior Div",
-    "twitter": "",
+    "twitter": "@liordiv",
     "country": "Israel",
     "outlierScore": 88,
     "startupLikelihood": 100,
@@ -4491,7 +4491,7 @@
   {
     "id": 7538,
     "name": "Ido Geffen",
-    "twitter": "",
+    "twitter": "@IddoGefen",
     "country": "Israel",
     "outlierScore": 86,
     "startupLikelihood": 100,
@@ -4836,7 +4836,7 @@
     "company": "Greentech Festival / Rosberg X Racing",
     "companyUrl": "https://greentechfestival.com",
     "investors": "N/A (he is the investor)",
-    "fundingSeries": "N/A"
+    "fundingSeries": ""
   },
   {
     "name": "Kathleen McMahon",
@@ -4861,7 +4861,7 @@
   },
   {
     "name": "Fabian Wesemann",
-    "twitter": "",
+    "twitter": "@FabianWesemann",
     "country": "Germany",
     "outlierScore": 85,
     "startupLikelihood": 100,
@@ -4902,7 +4902,7 @@
   },
   {
     "name": "Sam Blond",
-    "twitter": "",
+    "twitter": "@samdblond",
     "country": "United States",
     "outlierScore": 85,
     "startupLikelihood": 100,
@@ -4922,7 +4922,7 @@
   },
   {
     "name": "Mohammad Rastegari",
-    "twitter": "",
+    "twitter": "@morastegari",
     "country": "United States",
     "outlierScore": 85,
     "startupLikelihood": 100,
@@ -4942,7 +4942,7 @@
   },
   {
     "name": "Yonatan Striem-Amit",
-    "twitter": "",
+    "twitter": "@YonatanStrAmit",
     "country": "Israel",
     "outlierScore": 85,
     "startupLikelihood": 100,
@@ -4983,7 +4983,7 @@
   },
   {
     "name": "Jaleh Rezaei",
-    "twitter": "",
+    "twitter": "@jalehr",
     "country": "United States",
     "outlierScore": 85,
     "startupLikelihood": 100,
@@ -5235,7 +5235,7 @@
     "company": "Safe Superintelligence",
     "companyUrl": "https://ssi.inc",
     "investors": "Alphabet, NVIDIA, and others",
-    "fundingSeries": "Series B equivalent"
+    "fundingSeries": "Series B"
   },
   {
     "id": 7523,
@@ -5860,7 +5860,7 @@
   },
   {
     "name": "Jackson Gabbard",
-    "twitter": "",
+    "twitter": "@jgbbrd",
     "country": "United Kingdom",
     "outlierScore": 82,
     "startupLikelihood": 100,
@@ -5880,7 +5880,7 @@
   },
   {
     "name": "Cameron Fink",
-    "twitter": "",
+    "twitter": "@camfink",
     "country": "United States",
     "outlierScore": 82,
     "startupLikelihood": 100,
@@ -6068,7 +6068,7 @@
     "company": "Ableton",
     "companyUrl": "https://www.ableton.com",
     "investors": "Bootstrapped",
-    "fundingSeries": "Profitable"
+    "fundingSeries": "Bootstrapped"
   },
   {
     "id": 7200,
@@ -6240,7 +6240,7 @@
     "company": "Moltbook",
     "companyUrl": "https://moltbook.com",
     "investors": "Undisclosed",
-    "fundingSeries": "Early stage"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7180,
@@ -6671,7 +6671,7 @@
     "company": "Eyris",
     "companyUrl": "https://eyris.tech",
     "investors": "Red Cell Partners",
-    "fundingSeries": "Early stage"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7206,
@@ -6929,12 +6929,12 @@
     "company": "Aero Dynamique / Anakata Wind Power",
     "companyUrl": "https://www.aero-dynamique.com",
     "investors": "Offshore Wind Growth Partnership (OWGP)",
-    "fundingSeries": "Revenue-generating"
+    "fundingSeries": "Bootstrapped"
   },
   {
     "id": 7584,
     "name": "Caleb Frankel",
-    "twitter": "",
+    "twitter": "@CalebFrankel",
     "country": "USA",
     "outlierScore": 86,
     "startupLikelihood": 88,
@@ -6973,7 +6973,7 @@
     "company": "Cove",
     "companyUrl": "https://cove.inc",
     "investors": "Coatue, FootPrint Coalition (Robert Downey Jr.), Mucker Capital, TechSquare Labs",
-    "fundingSeries": "Revenue-generating"
+    "fundingSeries": "Bootstrapped"
   },
   {
     "id": 7204,
@@ -7553,7 +7553,7 @@
     "company": "Asteria Film Co.",
     "companyUrl": "https://www.asteriafilm.com",
     "investors": "Moonvalley",
-    "fundingSeries": "Early stage"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7601,
@@ -7896,7 +7896,7 @@
     "company": "DiverseFarm",
     "companyUrl": "https://www.diversefarm.com",
     "investors": "TissueByNet partnership",
-    "fundingSeries": "Early stage"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7182,
@@ -8070,7 +8070,7 @@
     "company": "DiverseFarm / TissueByNet",
     "companyUrl": "https://en.tissuebynet.com",
     "investors": "",
-    "fundingSeries": "Early stage"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7597,
@@ -8266,7 +8266,7 @@
     "company": "Asteria Film Co.",
     "companyUrl": "https://www.asteriafilm.com",
     "investors": "Moonvalley",
-    "fundingSeries": "Early stage"
+    "fundingSeries": "Pre-Seed"
   },
   {
     "id": 7395,
@@ -8441,7 +8441,7 @@
     "company": "aiDance",
     "companyUrl": "",
     "investors": "National Science Foundation",
-    "fundingSeries": "Research"
+    "fundingSeries": ""
   },
   {
     "id": 7349,
@@ -8613,7 +8613,7 @@
     "company": "Independent artist/researcher",
     "companyUrl": "",
     "investors": "",
-    "fundingSeries": "N/A"
+    "fundingSeries": ""
   },
   {
     "id": 7260,
@@ -8853,7 +8853,7 @@
     "company": "Acrobot",
     "companyUrl": "https://acrobot.nl",
     "investors": "",
-    "fundingSeries": "N/A"
+    "fundingSeries": ""
   },
   {
     "id": 7261,
@@ -9071,7 +9071,7 @@
     "company": "",
     "companyUrl": "",
     "investors": "",
-    "fundingSeries": "N/A"
+    "fundingSeries": ""
   },
   {
     "id": 7442,
