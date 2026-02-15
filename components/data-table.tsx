@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useMemo } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -24,6 +24,7 @@ import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import type { Person } from "@/lib/types";
 import { countryFlag } from "@/lib/country-flags";
+import { MultiSelectDropdown } from "@/components/multi-select-dropdown";
 
 const SPIKE_TAGS: { key: string; char: string; color: string }[] = [
   { key: "Academic Research", char: "A", color: "bg-blue-100 text-blue-700" },
@@ -37,7 +38,7 @@ const SPIKE_TAG_MAP = Object.fromEntries(SPIKE_TAGS.map((t) => [t.key, t]));
 function parseSpikeTags(text: string): { tags: string[]; rest: string } {
   const tags: string[] = [];
   let remaining = text;
-  const re = /^\[([^\]]+)\]/;
+  const re = /^\s*\[([^\]]+)\]/;
   let match;
   while ((match = re.exec(remaining))) {
     tags.push(match[1]);
@@ -97,25 +98,40 @@ const columns: ColumnDef<Person>[] = [
   {
     accessorKey: "name",
     header: "Name",
-    size: 130,
+    size: 160,
     cell: ({ row }) => {
       const handle = row.original.twitter;
       const name = row.original.name;
-      if (handle) {
-        const clean = handle.replace(/^@/, "");
-        return (
-          <a
-            href={`https://x.com/${clean}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-sm whitespace-nowrap truncate text-blue-600 hover:underline block"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {name}
-          </a>
-        );
-      }
-      return <div className="font-medium text-sm whitespace-nowrap truncate">{name}</div>;
+      const clean = handle ? handle.replace(/^@/, "") : "";
+      const avatarUrl = clean ? `https://unavatar.io/x/${clean}` : null;
+      return (
+        <div className="flex items-center gap-2 min-w-0">
+          {avatarUrl ? (
+            <img
+              src={avatarUrl}
+              alt=""
+              className="w-6 h-6 rounded-full flex-shrink-0 bg-muted"
+              loading="lazy"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+            />
+          ) : (
+            <div className="w-6 h-6 rounded-full flex-shrink-0 bg-muted" />
+          )}
+          {clean ? (
+            <a
+              href={`https://x.com/${clean}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-sm whitespace-nowrap truncate text-blue-600 hover:underline"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {name}
+            </a>
+          ) : (
+            <span className="font-medium text-sm whitespace-nowrap truncate">{name}</span>
+          )}
+        </div>
+      );
     },
   },
   {
@@ -225,86 +241,6 @@ const columns: ColumnDef<Person>[] = [
 ];
 
 
-function MultiSelectDropdown({
-  label,
-  options,
-  selected,
-  onChange,
-}: {
-  label: string;
-  options: { value: string; label: string }[];
-  selected: Set<string>;
-  onChange: (next: Set<string>) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [open]);
-
-  return (
-    <div ref={ref} className="relative">
-      <button
-        onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md border text-sm transition-colors ${
-          selected.size > 0
-            ? "border-foreground/30 bg-foreground/5 text-foreground"
-            : "border-border text-muted-foreground hover:border-foreground/20"
-        }`}
-      >
-        {label}
-        {selected.size > 0 && (
-          <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-foreground text-background text-xs font-semibold">
-            {selected.size}
-          </span>
-        )}
-        <svg className={`w-3.5 h-3.5 transition-transform ${open ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-      </button>
-      {open && (
-        <div className="absolute top-full left-0 mt-1 z-50 min-w-[180px] bg-popover border rounded-md shadow-md py-1">
-          {options.map((opt) => (
-            <label
-              key={opt.value}
-              className="flex items-center gap-2 px-3 py-1.5 text-sm cursor-pointer hover:bg-muted/50"
-            >
-              <input
-                type="checkbox"
-                checked={selected.has(opt.value)}
-                onChange={() => onChange(toggleSet(selected, opt.value))}
-                className="rounded"
-              />
-              {opt.label}
-            </label>
-          ))}
-          {selected.size > 0 && (
-            <>
-              <div className="border-t my-1" />
-              <button
-                onClick={() => onChange(new Set())}
-                className="w-full text-left px-3 py-1.5 text-xs text-muted-foreground hover:bg-muted/50"
-              >
-                Clear all
-              </button>
-            </>
-          )}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function toggleSet(set: Set<string>, value: string): Set<string> {
-  const next = new Set(set);
-  if (next.has(value)) next.delete(value);
-  else next.add(value);
-  return next;
-}
 
 const STAGES = ["Seed", "Series A", "Series B", "Series C", "Series D+", "IPO", "Acquired", "Bootstrapped"];
 
@@ -313,29 +249,38 @@ export function DataTable({ data }: { data: Person[] }) {
     { id: "outlierScore", desc: true },
   ]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [companyOnly, setCompanyOnly] = useState(true);
+  const [companyFilter, setCompanyFilter] = useState<Set<string>>(new Set(["yes"]));
   const [kvFilter, setKvFilter] = useState<Set<string>>(new Set(["no"]));
-  const [stageFilters, setStageFilters] = useState<Set<string>>(new Set(["Seed", "Series A", "Series B", "Bootstrapped"]));
+  const [stageFilters, setStageFilters] = useState<Set<string>>(new Set(["Seed", "Series A", "Series B", "Series C", "Bootstrapped"]));
+  const [spikeFilters, setSpikeFilters] = useState<Set<string>>(new Set());
   const [selectedPerson, setSelectedPerson] = useState<Person | null>(null);
 
-  const hasActiveFilters = stageFilters.size > 0 || companyOnly || kvFilter.size > 0;
+  const hasActiveFilters = companyFilter.size > 0 || stageFilters.size > 0 || kvFilter.size > 0 || spikeFilters.size > 0;
 
   const resetFilters = () => {
-    setStageFilters(new Set(["Seed", "Series A", "Series B", "Bootstrapped"]));
-    setCompanyOnly(true);
+    setCompanyFilter(new Set(["yes"]));
+    setStageFilters(new Set(["Seed", "Series A", "Series B", "Series C", "Bootstrapped"]));
     setKvFilter(new Set(["no"]));
+    setSpikeFilters(new Set());
   };
 
   const filteredData = useMemo(() => {
     let d = data;
-    if (companyOnly) d = d.filter((p) => p.company);
+    if (companyFilter.size > 0 && companyFilter.size < 2) {
+      if (companyFilter.has("yes")) d = d.filter((p) => p.company);
+      if (companyFilter.has("no")) d = d.filter((p) => !p.company);
+    }
     if (kvFilter.size > 0 && kvFilter.size < 2) {
       if (kvFilter.has("yes")) d = d.filter((p) => /khosla/i.test(p.investors || ""));
       if (kvFilter.has("no")) d = d.filter((p) => !/khosla/i.test(p.investors || ""));
     }
     if (stageFilters.size > 0) d = d.filter((p) => stageFilters.has(p.fundingSeries));
+    if (spikeFilters.size > 0) d = d.filter((p) => {
+      const { tags } = parseSpikeTags(p.achievements || "");
+      return [...spikeFilters].every((f) => tags.includes(f));
+    });
     return d;
-  }, [data, companyOnly, kvFilter, stageFilters]);
+  }, [data, companyFilter, kvFilter, stageFilters, spikeFilters]);
 
 
   const table = useReactTable({
@@ -348,31 +293,34 @@ export function DataTable({ data }: { data: Person[] }) {
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    initialState: { pagination: { pageSize: 50 } },
+    initialState: { pagination: { pageSize: 100 } },
   });
 
-  const withTwitter = data.filter((p) => p.twitter).length;
 
   return (
     <div className="space-y-4">
+      <blockquote className="border-l-2 border-muted-foreground/30 pl-3 text-sm italic text-muted-foreground">
+        &ldquo;Exceptionality in some dimension &mdash; top 1 basis point, or a Venn-diagram overlap of traits you almost never see together.&rdquo;
+        <span className="not-italic ml-2">&mdash; Vinod &amp; Keith</span>
+      </blockquote>
+
       {/* Stats bar */}
       <div className="flex gap-6 text-sm text-muted-foreground">
         <span><strong className="text-foreground">{data.length.toLocaleString()}</strong> people</span>
-        <span><strong className="text-foreground">{withTwitter}</strong> with Twitter</span>
-        <span><strong className="text-foreground">{filteredData.length.toLocaleString()}</strong> showing</span>
+<span><strong className="text-foreground">{filteredData.length.toLocaleString()}</strong> showing</span>
       </div>
 
       {/* Filters */}
       <div className="flex items-center gap-2 flex-wrap">
-        <label className="flex items-center gap-2 text-sm cursor-pointer">
-          <input
-            type="checkbox"
-            checked={companyOnly}
-            onChange={(e) => setCompanyOnly(e.target.checked)}
-            className="rounded"
-          />
-          Has Company
-        </label>
+        <MultiSelectDropdown
+          label="Company"
+          options={[
+            { value: "yes", label: "Yes" },
+            { value: "no", label: "No" },
+          ]}
+          selected={companyFilter}
+          onChange={setCompanyFilter}
+        />
         <MultiSelectDropdown
           label="KV"
           options={[
@@ -388,10 +336,16 @@ export function DataTable({ data }: { data: Person[] }) {
           selected={stageFilters}
           onChange={setStageFilters}
         />
+        <MultiSelectDropdown
+          label="Spikes"
+          options={SPIKE_TAGS.map((t) => ({ value: t.key, label: t.key }))}
+          selected={spikeFilters}
+          onChange={setSpikeFilters}
+        />
         {hasActiveFilters && (
           <button
             onClick={resetFilters}
-            className="px-3 py-1.5 rounded-full text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="px-3 py-1.5 rounded-full text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
           >
             Reset
           </button>
@@ -407,6 +361,8 @@ export function DataTable({ data }: { data: Person[] }) {
             {t.key}
           </span>
         ))}
+        <span className="ml-4 text-muted-foreground/60">|</span>
+        <span className="ml-4">Outlier = peak spike rarity (top of any single domain)</span>
       </div>
 
       {/* Table */}
@@ -468,14 +424,14 @@ export function DataTable({ data }: { data: Person[] }) {
           <button
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
-            className="px-3 py-1.5 border rounded-md text-sm disabled:opacity-40 hover:bg-muted"
+            className="px-3 py-1.5 border rounded-md text-sm disabled:opacity-40 hover:bg-muted cursor-pointer disabled:cursor-default"
           >
             Previous
           </button>
           <button
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
-            className="px-3 py-1.5 border rounded-md text-sm disabled:opacity-40 hover:bg-muted"
+            className="px-3 py-1.5 border rounded-md text-sm disabled:opacity-40 hover:bg-muted cursor-pointer disabled:cursor-default"
           >
             Next
           </button>

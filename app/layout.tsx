@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "KV Scout — Outlier Finder",
+  title: "Outlier Scout — Outlier Finder",
   description: "Find exceptional people before they raise",
 };
 

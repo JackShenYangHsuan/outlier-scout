@@ -1,0 +1,702 @@
+{
+  "cursor_ai": {
+    "name": "Cursor",
+    "description": "AI-powered code editor for developers to generate, edit, and review code using AI assistance.",
+    "stage": "Series D",
+    "investors": "Accel, Thrive Capital, Andreessen Horowitz, DST Global, Coatue, Nvidia, Google",
+    "website": "https://cursor.com"
+  },
+  "mistralai": {
+    "name": "Mistral AI",
+    "description": "French AI company building large language models and AI infrastructure.",
+    "stage": "Series C",
+    "investors": "General Catalyst, Lightspeed Venture Partners, Andreessen Horowitz, Nvidia, Salesforce Ventures, Cisco, IBM, Belfius, Eurazeo",
+    "website": "https://mistral.ai"
+  },
+  "midjourney": {
+    "name": "Midjourney",
+    "description": "AI image generation platform for creating artistic images from text prompts.",
+    "stage": "Self-funded",
+    "investors": "",
+    "website": "https://midjourney.com"
+  },
+  "anthropicai": {
+    "name": "Anthropic",
+    "description": "AI safety company developing Claude, a large language model designed with constitutional AI methods.",
+    "stage": "Series G",
+    "investors": "Google, Lightspeed Venture Partners, Bessemer Venture Partners, Salesforce Ventures, Amazon, D1 Capital Partners, Jane Street, General Catalyst, Menlo Ventures",
+    "website": "https://anthropic.com"
+  },
+  "openrouterai": {
+    "name": "OpenRouter",
+    "description": "Unified API platform providing access to multiple large language models from various AI providers.",
+    "stage": "Series A",
+    "investors": "Andreessen Horowitz, Menlo Ventures, Sequoia Capital, Figma, Fred Ehrsam",
+    "website": "https://openrouter.ai"
+  },
+  "comma_ai": {
+    "name": "Comma AI",
+    "description": "Open-source advanced driver assistance system providing autonomous vehicle capabilities for consumer cars.",
+    "stage": "Series A",
+    "investors": "Andreessen Horowitz, MicroVentures, Wavemaker Pacific Growth",
+    "website": "https://comma.ai"
+  },
+  "loom": {
+    "name": "Loom",
+    "description": "Video messaging platform for hybrid work communication and async video sharing.",
+    "stage": "Acquired (2023)",
+    "investors": "a16z, Sequoia Capital, Kleiner Perkins, General Catalyst, Coatue, ICONIQ Growth",
+    "website": "https://loom.com"
+  },
+  "superhumanmail": {
+    "name": "Superhuman",
+    "description": "AI-powered email productivity app with waitlist-only access offering speed and efficiency features.",
+    "stage": "Series C (Acquired 2025)",
+    "investors": "IVP, Tiger Global, Andreessen Horowitz, strategic investors including Drew Houston, Ashton Kutcher, Will Smith",
+    "website": "https://superhuman.com"
+  },
+  "clubhouse": {
+    "name": "Clubhouse",
+    "description": "Audio-based social network for live conversation and community building.",
+    "stage": "Series C",
+    "investors": "Andreessen Horowitz, DST Global, Tiger Global Management, Elad Gil",
+    "website": "https://clubhouse.com"
+  },
+  "intercom": {
+    "name": "Intercom",
+    "description": "Customer communication platform integrating live chat, chatbots, ticketing, and customer data.",
+    "stage": "Private (Growth stage)",
+    "investors": "Kleiner Perkins, Bessemer Venture Partners, Index Ventures, Google Ventures, Social Capital, ICONIQ Capital",
+    "website": "https://intercom.com"
+  },
+  "mercor_ai": {
+    "name": "Mercor",
+    "description": "Human-in-the-loop AI platform for talent recruitment and hiring with global expert networks.",
+    "stage": "Series C",
+    "investors": "Felicis Ventures, Benchmark, General Catalyst, Robinhood Ventures, Bill Gurley",
+    "website": "https://mercor.com"
+  },
+  "briefly_ai": {
+    "name": "Briefly",
+    "description": "AI-powered meeting note-taking and summarization platform.",
+    "stage": "Seed",
+    "investors": "Sequoia Capital",
+    "website": "https://briefly.ai"
+  },
+  "cluely": {
+    "name": "Cluely",
+    "description": "Real-time AI assistant that monitors screen content and audio during meetings to provide suggested answers.",
+    "stage": "Series A",
+    "investors": "Andreessen Horowitz, Abstract Ventures, Susa Ventures",
+    "website": "https://cluely.com"
+  },
+  "extropic": {
+    "name": "Extropic",
+    "description": "AI hardware startup building chips optimized for large language model inference and computation.",
+    "stage": "Seed",
+    "investors": "Kindred Ventures, Buckley Ventures, HOF Capital, Julian Capital, Marque VC, OSS Capital, Valor Equity Partners, Weekend Fund, naval ravikant, Garry Tan, Balaji Srinivasan",
+    "website": "https://extropic.ai"
+  },
+  "farcaster_xyz": {
+    "name": "Farcaster",
+    "description": "Decentralized social media protocol enabling blockchain-based social networking.",
+    "stage": "Series A (Acquired 2026)",
+    "investors": "Paradigm, a16z crypto, Haun Ventures, USV, Variant, Standard Crypto",
+    "website": "https://farcaster.xyz"
+  },
+  "golden": {
+    "name": "Golden",
+    "description": "Self-constructing knowledge database and knowledge graph for AI-driven discovery and education.",
+    "stage": "Acquired (2024)",
+    "investors": "Andreessen Horowitz, DCVC, Gigafund, Harpoon Ventures, Founders Fund, Giga Fund, SV Angel",
+    "website": "https://golden.com"
+  },
+  "hihello": {
+    "name": "HiHello",
+    "description": "Digital business card platform for managing professional networks across 147 countries.",
+    "stage": "Series A",
+    "investors": "Foundry Group, Lux Capital, August Capital, K9 Ventures, TenOneTen Ventures",
+    "website": "https://hihello.com"
+  },
+  "newlimit": {
+    "name": "NewLimit",
+    "description": "Biotechnology company using AI and genomics to develop medicines for aging and healthspan extension.",
+    "stage": "Series B",
+    "investors": "Kleiner Perkins, Lilly, Duke University, Khosla Ventures, others",
+    "website": "https://newlimit.com"
+  },
+  "panobihq": {
+    "name": "Panobi",
+    "description": "Growth-tracking platform for monitoring and collaborating on key user metrics (shut down 2024).",
+    "stage": "Seed (Defunct)",
+    "investors": "Index Ventures",
+    "website": "https://panobi.com"
+  },
+  "playhiddendoor": {
+    "name": "Hidden Door",
+    "description": "Generative AI narrative platform that transforms fiction into interactive social roleplaying experiences.",
+    "stage": "Seed",
+    "investors": "Makers Fund, Northzone, Betaworks, Homebrew",
+    "website": "https://hiddendoor.co"
+  },
+  "shippo": {
+    "name": "Shippo",
+    "description": "Shipping API platform providing logistics integration for e-commerce businesses.",
+    "stage": "Growth stage",
+    "investors": "Bessemer Venture Partners, Union Square Ventures, 500 Global, D1 Capital, others",
+    "website": "https://goshippo.com"
+  },
+  "takeoffai": {
+    "name": "Takeoff",
+    "description": "AI education platform teaching practical AI coding skills and development workflows.",
+    "stage": "Bootstrapped",
+    "investors": "",
+    "website": "https://www.jointakeoff.com"
+  },
+  "stellation": {
+    "name": "Stellation Capital",
+    "description": "Pre-seed and seed-stage venture capital firm focused on early-stage technology startups.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://stellation.capital"
+  },
+  "untillabs": {
+    "name": "Until Labs",
+    "description": "Biotech company developing organ cryopreservation technology to extend organ viability for transplants.",
+    "stage": "Series A",
+    "investors": "Founders Fund, Lux Capital",
+    "website": "https://untillabs.com"
+  },
+  "cartainc": {
+    "name": "Carta",
+    "description": "Cap table and equity management platform for startups and funds.",
+    "stage": "Growth",
+    "investors": "",
+    "website": "https://carta.com"
+  },
+  "datasetteproj": {
+    "name": "Datasette",
+    "description": "Open-source tool and framework for exploring and publishing structured data.",
+    "stage": "Open source",
+    "investors": "",
+    "website": "https://datasette.io"
+  },
+  "poe_platform": {
+    "name": "Poe",
+    "description": "AI chatbot platform by Quora enabling creators to build and monetize custom AI bots.",
+    "stage": "Growth stage",
+    "investors": "Andreessen Horowitz",
+    "website": "https://poe.com"
+  },
+  "nudge": {
+    "name": "Nudge",
+    "description": "Non-invasive neurotechnology startup developing brain-computer interfaces using focused ultrasound.",
+    "stage": "Series A",
+    "investors": "Thrive Capital, Greenoaks",
+    "website": "https://nudge.ai"
+  },
+  "macroscope": {
+    "name": "Macroscope",
+    "description": "AI-powered code review and engineering transparency platform that tracks codebase changes.",
+    "stage": "Series A",
+    "investors": "Lightspeed Venture Partners, Thrive Capital, Google Ventures",
+    "website": "https://macroscope.com"
+  },
+  "curatedxyz": {
+    "name": "Curated",
+    "description": "Cryptonative NFT asset fund collecting exceptional crypto art and culture.",
+    "stage": "Deployed",
+    "investors": "",
+    "website": "https://curated.xyz"
+  },
+  "gigascale": {
+    "name": "Gigascale",
+    "description": "Climate-focused venture capital firm investing in early-stage companies solving climate change.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://gigascale.com"
+  },
+  "antigravity": {
+    "name": "Antigravity",
+    "description": "Google DeepMind's agentic development platform powered by Gemini for agent-first software development.",
+    "stage": "Google Product",
+    "investors": "",
+    "website": ""
+  },
+  "ndea": {
+    "name": "Ndea",
+    "description": "AI research lab founded by Francois Chollet and Mike Knoop focused on program synthesis for AGI.",
+    "stage": "Early stage",
+    "investors": "",
+    "website": "https://ndea.com"
+  },
+  "drink_ag1": {
+    "name": "AG1",
+    "description": "Daily health supplement drink (formerly Athletic Greens) with 75+ vitamins and minerals.",
+    "stage": "Growth",
+    "investors": "",
+    "website": "https://drinkag1.com"
+  },
+  "signalapp": {
+    "name": "Signal",
+    "description": "Open-source encrypted messaging app for private and secure communications.",
+    "stage": "Nonprofit",
+    "investors": "Signal Foundation (Brian Acton $50M), Knight Foundation, Shuttleworth Foundation, Open Technology Fund",
+    "website": "https://signal.org"
+  },
+  "xai": {
+    "name": "xAI",
+    "description": "AI company developed by Elon Musk creating the Grok chatbot and advanced AI systems.",
+    "stage": "Series E",
+    "investors": "Nvidia, Cisco Investments, Valor Equity Partners, Stepstone Group, Fidelity, Qatar Investment Authority, MGX, Baron Capital Group, Tesla",
+    "website": "https://x.ai"
+  },
+  "udemy": {
+    "name": "Udemy",
+    "description": "Online learning marketplace connecting educators with millions of learners worldwide.",
+    "stage": "IPO (Acquired 2025)",
+    "investors": "Tencent, Insight Partners, Naspers, Norwest Venture Partners, Learn Capital, Stripes",
+    "website": "https://udemy.com"
+  },
+  "rootsofprogress": {
+    "name": "Roots of Progress",
+    "description": "Nonprofit organization dedicated to building a culture of progress for the 21st century.",
+    "stage": "Nonprofit",
+    "investors": "Survival and Flourishing Fund, Long-Term Future Fund, Open Philanthropy, Emergent Ventures",
+    "website": "https://rootsofprogress.org"
+  },
+  "rakugomedia": {
+    "name": "Rakugo Media",
+    "description": "Tech talent agency connecting storytellers and creators with tech brands.",
+    "stage": "Bootstrapped",
+    "investors": "",
+    "website": "https://rakugomedia.com"
+  },
+  "a16z": {
+    "name": "Andreessen Horowitz",
+    "description": "Leading venture capital firm investing in technology companies across multiple stages.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://a16z.com"
+  },
+  "ycombinator": {
+    "name": "Y Combinator",
+    "description": "Startup accelerator and venture capital firm launching 5,000+ companies since 2005.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://ycombinator.com"
+  },
+  "fcollective": {
+    "name": "Founder Collective",
+    "description": "Seed-stage venture capital firm founded by successful entrepreneurs.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://foundercollective.com"
+  },
+  "homebrew": {
+    "name": "Homebrew",
+    "description": "Early-stage venture capital firm investing in mission-driven founders building technology for change.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://homebrew.co"
+  },
+  "variantfund": {
+    "name": "Variant Fund",
+    "description": "Early-stage crypto venture capital firm investing in decentralized networks that turn users into owners.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://variant.fund"
+  },
+  "kleinperkins": {
+    "name": "Kleiner Perkins",
+    "description": "Historic venture capital firm founded in 1972 backing entrepreneurs across technology sectors.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://kleinerperkins.com"
+  },
+  "lightspeedvp": {
+    "name": "Lightspeed Venture Partners",
+    "description": "Global venture capital firm investing in seed through growth stage companies.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://lsvp.com"
+  },
+  "generalcatalyst": {
+    "name": "General Catalyst",
+    "description": "Global venture capital firm investing in seed to growth stage technology companies.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://generalcatalyst.com"
+  },
+  "electriccapital": {
+    "name": "Electric Capital",
+    "description": "Early-stage venture capital firm focused on cryptocurrency, blockchain, and Web3 technologies.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://electriccapital.com"
+  },
+  "dcvc": {
+    "name": "DCVC",
+    "description": "Deep tech venture capital firm investing in seed to growth stage companies applying compute to transform industries.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://dcvc.com"
+  },
+  "backstage_cap": {
+    "name": "Backstage Capital",
+    "description": "Venture capital firm focused on backing underrepresented founders.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://backstagecapital.com"
+  },
+  "shrugcap": {
+    "name": "Shrug Capital",
+    "description": "Venture capital firm backing early-stage founders.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://shrugcapital.com"
+  },
+  "offlineventures": {
+    "name": "Offline Ventures",
+    "description": "Venture capital firm investing in offline-first and local technology solutions.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://offline.vc"
+  },
+  "samosacapital": {
+    "name": "Samosa Capital",
+    "description": "Venture capital firm supporting South Asian and diaspora entrepreneurs.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://samosacapital.com"
+  },
+  "sapphireprtnrs": {
+    "name": "Sapphire Partners",
+    "description": "Venture capital firm investing in technology companies.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://sapphirepartners.com"
+  },
+  "redpointvc": {
+    "name": "Redpoint Ventures",
+    "description": "Venture capital firm founded in 1999 investing across seed, early stage, and growth stage companies.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://redpoint.com"
+  },
+  "firstharmonic": {
+    "name": "First Harmonic",
+    "description": "Venture capital firm backing early-stage founders.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": ""
+  },
+  "lookingglasscap": {
+    "name": "Looking Glass Capital",
+    "description": "Venture capital firm investing in technology companies.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": ""
+  },
+  "topology_vc": {
+    "name": "Topology Ventures",
+    "description": "Venture capital firm focused on infrastructure and developer tools.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": ""
+  },
+  "triatiomiccap": {
+    "name": "Triatomic Capital",
+    "description": "Venture capital firm investing in AI and technology companies.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": ""
+  },
+  "trustfund": {
+    "name": "Trust Fund",
+    "description": "Venture capital firm backing founders.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": ""
+  },
+  "join_ef": {
+    "name": "Entrepreneur First",
+    "description": "Pre-seed venture capital and talent matching platform for recruiting co-founders.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://joinef.com"
+  },
+  "saifvc": {
+    "name": "SAIF Partners",
+    "description": "Venture capital firm investing in early-stage companies.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": ""
+  },
+  "hashtagangels": {
+    "name": "Hashtag Angels",
+    "description": "Angel investor network backing early-stage startups.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": ""
+  },
+  "ashbyhq": {
+    "name": "Ashby",
+    "description": "All-in-one recruiting and talent management platform for ambitious hiring teams.",
+    "stage": "Series D",
+    "investors": "Y Combinator, Elad Gil, Lachy Groom, F-Prime Capital, Alkeon Capital, Harmony Partners",
+    "website": "https://ashbyhq.com"
+  },
+  "physical_int": {
+    "name": "Physical Intelligence",
+    "description": "AI robotics company building foundation models for physical interaction and manipulation.",
+    "stage": "Series B",
+    "investors": "Jeff Bezos, Thrive Capital, Lux Capital, Bond, Khosla Ventures",
+    "website": "https://physicalintelligence.company"
+  },
+  "theworldlabs": {
+    "name": "World Labs",
+    "description": "Spatial intelligence AI company building large world models for 3D understanding.",
+    "stage": "Series A",
+    "investors": "Andreessen Horowitz, Radical Ventures, NEA, AMD, NVentures",
+    "website": "https://worldlabs.ai"
+  },
+  "p0": {
+    "name": "P0",
+    "description": "Security and infrastructure platform founded by former Twitter CEO Parag Agrawal.",
+    "stage": "Seed",
+    "investors": "Khosla Ventures, Greylock Partners",
+    "website": "https://p0.dev"
+  },
+  "costplusdrugs": {
+    "name": "Cost Plus Drugs",
+    "description": "Online pharmacy offering transparent, low-cost generic medications.",
+    "stage": "Growth",
+    "investors": "Mark Cuban (founder-funded)",
+    "website": "https://costplusdrugs.com"
+  },
+  "theinformation": {
+    "name": "The Information",
+    "description": "Premium tech journalism outlet covering Silicon Valley and the tech industry.",
+    "stage": "Growth",
+    "investors": "Andreessen Horowitz, Laurene Powell Jobs",
+    "website": "https://theinformation.com"
+  },
+  "elevenlabsio": {
+    "name": "ElevenLabs",
+    "description": "AI voice synthesis and audio AI platform for generating natural speech.",
+    "stage": "Series C",
+    "investors": "Andreessen Horowitz, Iconiq, Sequoia Capital, Smash Capital, Nat Friedman",
+    "website": "https://elevenlabs.io"
+  },
+  "browserbase": {
+    "name": "Browserbase",
+    "description": "Headless browser infrastructure for AI agents and web automation.",
+    "stage": "Series A",
+    "investors": "Kleiner Perkins, Afore Capital",
+    "website": "https://browserbase.com"
+  },
+  "poolsideai": {
+    "name": "Poolside AI",
+    "description": "AI company building coding-focused foundation models for software development.",
+    "stage": "Series B",
+    "investors": "Bain Capital Ventures, DST Global, Redpoint, Samsung Next",
+    "website": "https://poolside.ai"
+  },
+  "suno_ai_": {
+    "name": "Suno",
+    "description": "AI music generation platform creating songs from text prompts.",
+    "stage": "Series B",
+    "investors": "Lightspeed Venture Partners, Nat Friedman, Daniel Gross",
+    "website": "https://suno.com"
+  },
+  "lovable": {
+    "name": "Lovable",
+    "description": "AI-powered full-stack web app builder generating production-ready code from prompts.",
+    "stage": "Series A",
+    "investors": "Spark Capital, Accel, Coatue",
+    "website": "https://lovable.dev"
+  },
+  "windsurf": {
+    "name": "Windsurf",
+    "description": "AI-powered code editor (formerly Codeium) for agentic software development.",
+    "stage": "Series C",
+    "investors": "Greenoaks Capital, General Catalyst, Kleiner Perkins",
+    "website": "https://windsurf.com"
+  },
+  "resend": {
+    "name": "Resend",
+    "description": "Developer-first email API platform for sending transactional and marketing emails.",
+    "stage": "Series A",
+    "investors": "Andreessen Horowitz, Y Combinator, SV Angel",
+    "website": "https://resend.com"
+  },
+  "vercel": {
+    "name": "Vercel",
+    "description": "Frontend cloud platform for deploying Next.js and React applications.",
+    "stage": "Series E",
+    "investors": "Accel, CRV, GV, Bedrock, Greenoaks",
+    "website": "https://vercel.com"
+  },
+  "supabase": {
+    "name": "Supabase",
+    "description": "Open-source Firebase alternative with Postgres database, auth, and realtime subscriptions.",
+    "stage": "Series C",
+    "investors": "Felicis Ventures, Coatue, Y Combinator",
+    "website": "https://supabase.com"
+  },
+  "astral_sh": {
+    "name": "Astral",
+    "description": "Developer tools company building fast Python tooling (uv, Ruff).",
+    "stage": "Series A",
+    "investors": "Accel, Caffeinated Capital, Guillermo Rauch",
+    "website": "https://astral.sh"
+  },
+  "arcprize": {
+    "name": "ARC Prize",
+    "description": "Competition and foundation advancing artificial general intelligence research via the ARC benchmark.",
+    "stage": "Nonprofit",
+    "investors": "",
+    "website": "https://arcprize.org"
+  },
+  "shieldaitech": {
+    "name": "Shield AI",
+    "description": "Defense AI company building autonomous systems for military aircraft and drones.",
+    "stage": "Series F",
+    "investors": "Andreessen Horowitz, Riot Ventures, Point72, Snowpoint Ventures",
+    "website": "https://shield.ai"
+  },
+  "eightsleep": {
+    "name": "Eight Sleep",
+    "description": "Smart mattress and sleep technology company using AI to optimize sleep temperature.",
+    "stage": "Series D",
+    "investors": "Valor Equity Partners, Khosla Ventures, Founders Fund, Y Combinator",
+    "website": "https://eightsleep.com"
+  },
+  "moxxieventures": {
+    "name": "Moxxie Ventures",
+    "description": "Early-stage venture capital firm led by Katie Stanton investing in consumer and enterprise startups.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://moxxie.vc"
+  },
+  "mavenhq": {
+    "name": "Maven",
+    "description": "Cohort-based online course platform for expert-led live learning.",
+    "stage": "Series B",
+    "investors": "Andreessen Horowitz, First Round Capital, Naval Ravikant",
+    "website": "https://maven.com"
+  },
+  "fin_ai": {
+    "name": "Fin AI",
+    "description": "AI customer service agent built by Intercom for automated support resolution.",
+    "stage": "Intercom Product",
+    "investors": "",
+    "website": "https://intercom.com/fin"
+  },
+  "forethought_ai": {
+    "name": "Forethought",
+    "description": "AI-powered customer support automation platform.",
+    "stage": "Series C",
+    "investors": "New Enterprise Associates, Steadfast Venture Capital",
+    "website": "https://forethought.ai"
+  },
+  "promptlayer": {
+    "name": "PromptLayer",
+    "description": "Prompt engineering platform for managing and versioning LLM prompts.",
+    "stage": "Seed",
+    "investors": "Y Combinator",
+    "website": "https://promptlayer.com"
+  },
+  "partiful": {
+    "name": "Partiful",
+    "description": "Event planning and invitation platform for social gatherings.",
+    "stage": "Series A",
+    "investors": "a16z, Y Combinator, General Catalyst",
+    "website": "https://partiful.com"
+  },
+  "placer_ai": {
+    "name": "Placer.ai",
+    "description": "Location analytics platform providing foot traffic data and consumer behavior insights.",
+    "stage": "Series D",
+    "investors": "Josh Buckley, JBV, WndrCo, Lachy Groom",
+    "website": "https://placer.ai"
+  },
+  "slingshotai_inc": {
+    "name": "Slingshot AI",
+    "description": "AI-powered defense and intelligence platform.",
+    "stage": "Series A",
+    "investors": "",
+    "website": "https://slingshotai.io"
+  },
+  "basetenco": {
+    "name": "Baseten",
+    "description": "ML inference infrastructure platform for deploying and scaling AI models.",
+    "stage": "Series B",
+    "investors": "IVP, Spark Capital, Greylock Partners",
+    "website": "https://baseten.co"
+  },
+  "mercury": {
+    "name": "Mercury",
+    "description": "Banking platform for startups with checking, savings, and treasury management.",
+    "stage": "Series C",
+    "investors": "Sequoia Capital, Andreessen Horowitz, CRV, Coatue",
+    "website": "https://mercury.com"
+  },
+  "zapier": {
+    "name": "Zapier",
+    "description": "Workflow automation platform connecting thousands of apps without code.",
+    "stage": "Growth (bootstrapped)",
+    "investors": "Sequoia Capital, Steadfast Venture Capital",
+    "website": "https://zapier.com"
+  },
+  "superhuman": {
+    "name": "Superhuman",
+    "description": "AI-powered email client and productivity suite acquired by Grammarly.",
+    "stage": "Acquired (2025)",
+    "investors": "IVP, a16z, Tiger Global, First Round Capital",
+    "website": "https://superhuman.com"
+  },
+  "paradigm": {
+    "name": "Paradigm",
+    "description": "Cryptocurrency-focused venture capital firm investing in blockchain and crypto infrastructure.",
+    "stage": "VC Firm",
+    "investors": "",
+    "website": "https://paradigm.xyz"
+  },
+  "coinbase": {
+    "name": "Coinbase",
+    "description": "Publicly traded cryptocurrency exchange platform for buying, selling, and storing digital assets.",
+    "stage": "Public (NASDAQ: COIN)",
+    "investors": "",
+    "website": "https://coinbase.com"
+  },
+  "__tinygrad__": {
+    "name": "tinygrad",
+    "description": "Minimalist open-source deep learning framework designed for simplicity and performance.",
+    "stage": "Seed",
+    "investors": "",
+    "website": "https://tinygrad.org"
+  },
+  "classdojo": {
+    "name": "ClassDojo",
+    "description": "K-12 classroom communication platform connecting teachers with families.",
+    "stage": "Series D",
+    "investors": "GSV Ventures, General Catalyst, Owl Ventures",
+    "website": "https://classdojo.com"
+  },
+  "theziphq": {
+    "name": "Zip",
+    "description": "B2B procurement and spend management platform for enterprise purchasing workflows.",
+    "stage": "Series D",
+    "investors": "Tiger Global, Y Combinator, CRV, Greenoaks",
+    "website": "https://ziphq.com"
+  },
+  "oboelabs": {
+    "name": "Oboe Labs",
+    "description": "Michael Mignano's new AI startup (stealth).",
+    "stage": "Early stage",
+    "investors": "",
+    "website": ""
+  }
+}
