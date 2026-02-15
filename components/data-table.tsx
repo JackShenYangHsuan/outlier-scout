@@ -352,8 +352,8 @@ export function DataTable({ data }: { data: Person[] }) {
         )}
       </div>
 
-      {/* Spike legend */}
-      <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
+      {/* Spike legend — desktop only */}
+      <div className="hidden md:flex items-center gap-3 text-xs text-muted-foreground mb-2">
         <span className="font-medium">Spike types:</span>
         {SPIKE_TAGS.map((t) => (
           <span key={t.key} className="flex items-center gap-1">
@@ -365,8 +365,58 @@ export function DataTable({ data }: { data: Person[] }) {
         <span className="ml-4">Outlier = peak spike rarity (top of any single domain)</span>
       </div>
 
-      {/* Table */}
-      <div className="border rounded-lg overflow-auto flex-1" style={{ maxHeight: "calc(100vh - 220px)" }}>
+      {/* Mobile card list */}
+      <div className="md:hidden space-y-2 overflow-auto" style={{ maxHeight: "calc(100vh - 280px)" }}>
+        {table.getRowModel().rows.length ? (
+          table.getRowModel().rows.map((row) => {
+            const p = row.original;
+            const clean = p.twitter ? p.twitter.replace(/^@/, "") : "";
+            const avatarUrl = clean ? `https://unavatar.io/x/${clean}` : null;
+            const { tags } = parseSpikeTags(p.achievements || "");
+            return (
+              <div
+                key={row.id}
+                onClick={() => setSelectedPerson(p)}
+                className={`border rounded-lg p-3 cursor-pointer active:bg-muted/60 ${
+                  p.outlierScore >= 90 ? "bg-green-50/50" : ""
+                }`}
+              >
+                <div className="flex items-start gap-3">
+                  {avatarUrl ? (
+                    <img src={avatarUrl} alt="" className="w-10 h-10 rounded-full flex-shrink-0 bg-muted" loading="lazy" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full flex-shrink-0 bg-muted" />
+                  )}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <ScoreBadge score={p.outlierScore} palette="blue" />
+                      {clean ? (
+                        <a href={`https://x.com/${clean}`} target="_blank" rel="noopener noreferrer" className="font-medium text-sm text-blue-600 truncate" onClick={(e) => e.stopPropagation()}>{p.name}</a>
+                      ) : (
+                        <span className="font-medium text-sm truncate">{p.name}</span>
+                      )}
+                    </div>
+                    {p.company && (
+                      <div className="text-xs text-muted-foreground mt-0.5 truncate">{p.company}{p.fundingSeries ? ` · ${p.fundingSeries}` : ""}</div>
+                    )}
+                    <div className="flex items-center gap-1 mt-1">
+                      {tags.map((tag) => (
+                        <span key={tag} className={`inline-flex items-center justify-center w-5 h-5 rounded text-xs font-medium ${(SPIKE_TAG_MAP[tag]?.color || "bg-gray-100 text-gray-700")}`}>{SPIKE_TAG_MAP[tag]?.char || tag[0]}</span>
+                      ))}
+                      {p.currentActivity && <span className="text-xs text-muted-foreground truncate ml-1">{p.currentActivity}</span>}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <div className="text-center text-muted-foreground py-8">No results.</div>
+        )}
+      </div>
+
+      {/* Desktop table */}
+      <div className="hidden md:block border rounded-lg overflow-auto flex-1" style={{ maxHeight: "calc(100vh - 220px)" }}>
         <Table className="table-fixed min-w-[1060px]">
           <TableHeader className="sticky top-0 z-10 bg-background">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -426,7 +476,7 @@ export function DataTable({ data }: { data: Person[] }) {
             disabled={!table.getCanPreviousPage()}
             className="px-3 py-1.5 border rounded-md text-sm disabled:opacity-40 hover:bg-muted cursor-pointer disabled:cursor-default"
           >
-            Previous
+            Prev
           </button>
           <button
             onClick={() => table.nextPage()}

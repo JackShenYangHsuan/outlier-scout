@@ -16,10 +16,10 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col max-w-[1600px] mx-auto">
       {/* Header + tabs */}
-      <div className="flex-none px-6 pt-6 pb-0">
-        <div className="flex items-end justify-between mb-4">
+      <div className="flex-none px-4 pt-4 pb-0 md:px-6 md:pt-6">
+        <div className="flex items-end justify-between mb-3 md:mb-4">
           <div>
-            <h1 className="text-2xl font-bold">Find founders off your radar</h1>
+            <h1 className="text-xl md:text-2xl font-bold">Find founders off your radar</h1>
             <p className="text-muted-foreground text-sm">
               Exceptional builders sourced from outlier signals and Twitter social graph
             </p>
@@ -53,11 +53,11 @@ export default function Home() {
 
       {/* Content */}
       {tab === "people" ? (
-        <div className="flex-1 p-6">
+        <div className="flex-1 p-4 md:p-6">
           <DataTable data={peopleData as Person[]} />
         </div>
       ) : (
-        <div className="flex-1 overflow-hidden p-6" style={{ height: "calc(100vh - 120px)" }}>
+        <div className="flex-1 overflow-hidden p-4 md:p-6" style={{ height: "calc(100vh - 120px)" }}>
           <NetworkList
             data={graphData as GraphData}
             selectedId={null}

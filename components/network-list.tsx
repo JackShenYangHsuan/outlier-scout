@@ -297,8 +297,45 @@ export function NetworkList({ data }: Props) {
         </DialogContent>
       </Dialog>
 
-      {/* Table */}
-      <div className="border rounded-lg overflow-auto flex-1" style={{ maxHeight: "calc(100vh - 220px)" }}>
+      {/* Mobile card list */}
+      <div className="md:hidden space-y-2 overflow-auto flex-1" style={{ maxHeight: "calc(100vh - 280px)" }}>
+        {grouped.map(([role, items]) => {
+          const style = ROLE_PATTERNS.find((p) => p.label === role) || OTHER_STYLE;
+          return (
+            <div key={role}>
+              <div className={`px-3 py-1.5 rounded-md ${style.bg} mb-2`}>
+                <span className={`text-xs font-semibold ${style.text}`}>{role}</span>
+                <span className={`text-[10px] ${style.text} opacity-60 ml-1`}>{items.length}</span>
+              </div>
+              <div className="space-y-2 mb-3">
+                {items.map(({ rec, primary }) => (
+                  <div key={rec.id} className="border rounded-lg p-3">
+                    <div className="flex items-start gap-3">
+                      <Avatar username={rec.username} name={rec.name} size={36} />
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm font-medium text-emerald-600">{rec.hub_count}</span>
+                          <a href={`https://x.com/${rec.username}`} target="_blank" rel="noopener noreferrer" className="font-medium text-sm text-blue-600 truncate">{rec.name}</a>
+                          <span className="text-xs text-muted-foreground ml-auto shrink-0">{formatFollowers(rec.followers_count)}</span>
+                        </div>
+                        {rec.description && (
+                          <p className="text-xs text-muted-foreground line-clamp-2 mt-0.5">{rec.description}</p>
+                        )}
+                        {primary?.name && (
+                          <div className="text-xs text-muted-foreground mt-1">{primary.name}{primary.stage ? ` · ${primary.stage}` : ""}</div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop table */}
+      <div className="hidden md:block border rounded-lg overflow-auto flex-1" style={{ maxHeight: "calc(100vh - 220px)" }}>
         <table className="w-full text-sm">
             <thead className="sticky top-0 z-10 bg-background border-b">
               <tr className="border-b">
