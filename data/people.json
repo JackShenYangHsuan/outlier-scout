@@ -3433,7 +3433,7 @@
     "currentActivity": "Founder of Situational Awareness",
     "fundingInfo": "$1.5B assets under management",
     "company": "Situational Awareness",
-    "companyUrl": "",
+    "companyUrl": "https://situationalawarenesslp.com",
     "investors": "Various institutional investors",
     "fundingSeries": "Bootstrapped",
     "id": 7637
@@ -4395,7 +4395,7 @@
     "notes": "",
     "currentActivity": "Harvard scientist and repeat biotech founder",
     "fundingInfo": "Multiple venture rounds",
-    "company": "Multiple biotech startups",
+    "company": "",
     "investors": "Top biotech VCs",
     "fundingSeries": "",
     "companyUrl": ""
@@ -5425,7 +5425,7 @@
     "notes": "",
     "currentActivity": "AI pioneer involved in venture creation and advisory",
     "fundingInfo": "Ecosystem-backed",
-    "company": "Mila ecosystem ventures",
+    "company": "",
     "investors": "",
     "fundingSeries": "",
     "companyUrl": ""
@@ -6477,10 +6477,10 @@
     "notes": "",
     "currentActivity": "Creator of llama.cpp / ggml open-source inference stack",
     "fundingInfo": "Open-source led",
-    "company": "ggml/llama.cpp ecosystem",
+    "company": "ggml.ai",
     "investors": "",
     "fundingSeries": "Bootstrapped",
-    "companyUrl": ""
+    "companyUrl": "https://ggml.ai"
   },
   {
     "id": 7203,
@@ -6540,7 +6540,7 @@
     "notes": "",
     "currentActivity": "Repeat consumer founder building new early products",
     "fundingInfo": "Seed-backed projects",
-    "company": "New social/AI ventures",
+    "company": "",
     "investors": "A16Z/seed ecosystem",
     "fundingSeries": "Seed",
     "companyUrl": ""
@@ -7057,8 +7057,8 @@
     "notes": "RARE COMBO | Olympic champion -> femtech founder. Used personal experience as elite female athlete dealing with hormone cycles to build a science-backed wellness platform. Not just lending name - actively designed the product based on lived experience of hormonal impact on athletic performance.",
     "currentActivity": "Founder of Jennis (acquired by Orreco), building women's performance platform",
     "fundingInfo": "Raised pre-seed funding, acquired by Orreco (AI bio-analytics)",
-    "company": "Jennis (now part of Orreco)",
-    "companyUrl": "",
+    "company": "Jennis",
+    "companyUrl": "https://www.jennis.com",
     "investors": "Maki.vc, Venrex",
     "fundingSeries": "Acquired"
   },
@@ -7185,10 +7185,10 @@
     "notes": "",
     "currentActivity": "Researcher and open-model contributor (latent diffusion lineage)",
     "fundingInfo": "N/A",
-    "company": "Stability AI ecosystem",
+    "company": "Black Forest Labs",
     "investors": "",
     "fundingSeries": "",
-    "companyUrl": ""
+    "companyUrl": "https://blackforestlabs.ai"
   },
   {
     "id": 7308,
@@ -7292,7 +7292,7 @@
     "notes": "",
     "currentActivity": "Creator of bitsandbytes and efficient LLM training tooling",
     "fundingInfo": "N/A",
-    "company": "BitsAndBytes ecosystem",
+    "company": "",
     "investors": "",
     "fundingSeries": "",
     "companyUrl": ""
@@ -7506,7 +7506,7 @@
     "notes": "",
     "currentActivity": "Creator of ControlNet and Fooocus-related open tools",
     "fundingInfo": "N/A",
-    "company": "ControlNet/Fooocus ecosystem",
+    "company": "",
     "investors": "",
     "fundingSeries": "",
     "companyUrl": ""
@@ -7742,7 +7742,7 @@
     "notes": "",
     "currentActivity": "Early-stage OSS agent ecosystem founder profile",
     "fundingInfo": "Pre-seed/seed",
-    "company": "Open-source agent tooling",
+    "company": "",
     "investors": "",
     "fundingSeries": "Pre-Seed",
     "companyUrl": ""
@@ -7980,7 +7980,7 @@
     "notes": "",
     "currentActivity": "Early-stage enterprise AI operator/founder profile",
     "fundingInfo": "Seed/Series A style trajectories",
-    "company": "Cohere ecosystem/enterprise AI",
+    "company": "",
     "investors": "",
     "fundingSeries": "",
     "companyUrl": ""
@@ -8045,7 +8045,7 @@
     "notes": "",
     "currentActivity": "Creator-led media company operator",
     "fundingInfo": "Private",
-    "company": "Waveform/creator media operations",
+    "company": "",
     "investors": "Professional management",
     "fundingSeries": "Bootstrapped",
     "companyUrl": ""
@@ -8111,7 +8111,7 @@
     "notes": "",
     "currentActivity": "AI researcher contributing to open model/code systems",
     "fundingInfo": "N/A",
-    "company": "Code LLM/open model ecosystem",
+    "company": "",
     "investors": "",
     "fundingSeries": "",
     "companyUrl": ""
@@ -8219,7 +8219,7 @@
     "notes": "",
     "currentActivity": "Early-stage founder building data+AI workflows",
     "fundingInfo": "Pre-seed/seed",
-    "company": "Agentic data startup",
+    "company": "",
     "investors": "",
     "fundingSeries": "Pre-Seed",
     "companyUrl": ""
@@ -8285,7 +8285,7 @@
     "notes": "",
     "currentActivity": "Founder/operator in OSS AI tooling",
     "fundingInfo": "Seed-stage",
-    "company": "Open-source AI tooling startup",
+    "company": "",
     "investors": "",
     "fundingSeries": "Seed",
     "companyUrl": ""
@@ -8307,7 +8307,7 @@
     "notes": "",
     "currentActivity": "Early-stage founder/operator",
     "fundingInfo": "Seed-stage",
-    "company": "AI coding/startup ecosystem",
+    "company": "",
     "investors": "",
     "fundingSeries": "Seed",
     "companyUrl": ""
@@ -8503,7 +8503,7 @@
     "notes": "",
     "currentActivity": "Early-stage founder in AI + fintech stack",
     "fundingInfo": "Pre-seed/seed",
-    "company": "AI fintech infra startup",
+    "company": "",
     "investors": "",
     "fundingSeries": "Pre-Seed",
     "companyUrl": ""
@@ -8524,7 +8524,7 @@
     "notes": "",
     "currentActivity": "Founder in agentic AI productivity workflows",
     "fundingInfo": "Seed-stage",
-    "company": "Agentic workflow startup",
+    "company": "",
     "investors": "",
     "fundingSeries": "Seed",
     "companyUrl": ""
@@ -8610,7 +8610,7 @@
     "notes": "RARE COMBO | Visual artist -> generative AI art pioneer. One of the original artists working with neural networks before it was mainstream. His art practice IS the R&D for understanding what generative AI can do visually. Pushing the boundary between art and artificial intelligence.",
     "currentActivity": "AI artist and researcher",
     "fundingInfo": "",
-    "company": "Independent artist/researcher",
+    "company": "",
     "companyUrl": "",
     "investors": "",
     "fundingSeries": ""
@@ -8675,7 +8675,7 @@
     "notes": "",
     "currentActivity": "Open-source data educator/operator",
     "fundingInfo": "N/A",
-    "company": "Pandas educational ecosystem",
+    "company": "",
     "investors": "",
     "fundingSeries": "",
     "companyUrl": ""
@@ -8807,7 +8807,7 @@
     "notes": "",
     "currentActivity": "Ecosystem operator and scout for frontier teams",
     "fundingInfo": "N/A",
-    "company": "a16z ecosystem",
+    "company": "AMP",
     "investors": "",
     "fundingSeries": "Bootstrapped",
     "companyUrl": ""
@@ -8915,10 +8915,10 @@
     "notes": "",
     "currentActivity": "Ex-VC/finance operator turned creator-founder",
     "fundingInfo": "Private",
-    "company": "Creator-led holding ecosystem",
+    "company": "SRB Holdings",
     "investors": "",
     "fundingSeries": "Bootstrapped",
-    "companyUrl": ""
+    "companyUrl": "https://www.sahilbloom.com"
   },
   {
     "id": 7470,
@@ -8959,10 +8959,10 @@
     "notes": "",
     "currentActivity": "Creator-operator",
     "fundingInfo": "Private",
-    "company": "Creator media ventures",
+    "company": "The Publish Company",
     "investors": "",
     "fundingSeries": "Bootstrapped",
-    "companyUrl": ""
+    "companyUrl": "https://www.colinandsamir.com"
   },
   {
     "id": 7321,
@@ -8981,7 +8981,7 @@
     "notes": "",
     "currentActivity": "Operator with finance/media pedigree",
     "fundingInfo": "Private",
-    "company": "SoulCycle ecosystem / startup operator",
+    "company": "",
     "investors": "",
     "fundingSeries": "Bootstrapped",
     "companyUrl": ""
@@ -9025,10 +9025,10 @@
     "notes": "",
     "currentActivity": "Artist-founder and investor/operator",
     "fundingInfo": "Private",
-    "company": "Beauty Marks / Ten To One investment portfolio",
+    "company": "Beauty Marks Entertainment",
     "investors": "",
     "fundingSeries": "Bootstrapped",
-    "companyUrl": ""
+    "companyUrl": "https://www.beautymarksentertainment.com"
   },
   {
     "id": 7390,
@@ -9111,7 +9111,7 @@
     "notes": "",
     "currentActivity": "Author-creator operating direct business",
     "fundingInfo": "Cashflow model",
-    "company": "Creator-led education business",
+    "company": "",
     "investors": "",
     "fundingSeries": "Bootstrapped",
     "companyUrl": ""
@@ -9201,10 +9201,10 @@
     "notes": "",
     "currentActivity": "Elite performer turned venture/operator",
     "fundingInfo": "Private",
-    "company": "Media/fitness ventures",
+    "company": "Greatness Wins",
     "investors": "",
     "fundingSeries": "Bootstrapped",
-    "companyUrl": ""
+    "companyUrl": "https://greatnesswins.com"
   },
   {
     "id": 77,
