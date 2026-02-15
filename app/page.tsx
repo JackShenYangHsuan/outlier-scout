@@ -21,7 +21,7 @@ export default function Home() {
           <div>
             <h1 className="text-2xl font-bold">Find founders off your radar</h1>
             <p className="text-muted-foreground text-sm">
-              Exceptional builders before they raise — sourced from outlier signals and Twitter social graph
+              Exceptional builders sourced from outlier signals and Twitter social graph
             </p>
           </div>
         </div>
@@ -48,16 +48,6 @@ export default function Home() {
           >
             Twitter
           </button>
-
-          {/* Stats (only on network tab) */}
-          {tab === "network" && (
-            <div className="ml-auto flex items-center gap-2 pb-1">
-              <span className="text-xs text-gray-400">
-                {(graphData as GraphData).stats.total_recommendations} recs ·{" "}
-                {(graphData as GraphData).stats.hubs_fetched} seed accounts
-              </span>
-            </div>
-          )}
         </div>
       </div>
 
